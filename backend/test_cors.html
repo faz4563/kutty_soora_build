@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image CORS Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        .test-result { margin: 10px 0; }
+        .success { color: green; }
+        .error { color: red; }
+        img { max-width: 200px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Image CORS Test</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Direct Image Access</h2>
+        <p>Testing direct access to backend/images/product_image_001.png</p>
+        <img src="http://localhost/kuttysoora_seafood/backend/images/product_image_001.png" 
+             onload="showResult('direct-test', true)" 
+             onerror="showResult('direct-test', false)" />
+        <div id="direct-test" class="test-result">Loading...</div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 2: Image PHP Script</h2>
+        <p>Testing access via backend/image.php?path=product_image_001.png</p>
+        <img src="http://localhost/kuttysoora_seafood/backend/image.php?path=product_image_001.png" 
+             onload="showResult('script-test', true)" 
+             onerror="showResult('script-test', false)" />
+        <div id="script-test" class="test-result">Loading...</div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: CORS Headers Check</h2>
+        <button onclick="testCors()">Test CORS Headers</button>
+        <div id="cors-test" class="test-result"></div>
+    </div>
+
+    <script>
+        function showResult(testId, success) {
+            const element = document.getElementById(testId);
+            if (success) {
+                element.innerHTML = '<span class="success">✓ Image loaded successfully</span>';
+            } else {
+                element.innerHTML = '<span class="error">✗ Image failed to load</span>';
+            }
+        }
+
+        async function testCors() {
+            const resultDiv = document.getElementById('cors-test');
+            resultDiv.innerHTML = 'Testing CORS headers...';
+            
+            try {
+                const response = await fetch('http://localhost/kuttysoora_seafood/backend/image.php?path=product_image_001.png');
+                const corsHeader = response.headers.get('Access-Control-Allow-Origin');
+                
+                if (corsHeader) {
+                    resultDiv.innerHTML = `<span class="success">✓ CORS header present: ${corsHeader}</span>`;
+                } else {
+                    resultDiv.innerHTML = '<span class="error">✗ CORS header missing</span>';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">✗ Error: ${error.message}</span>`;
+            }
+        }
+    </script>
+</body>
+</html>

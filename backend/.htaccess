@@ -1,0 +1,59 @@
+# Enable CORS for all files in this directory
+<IfModule mod_headers.c>
+    # Handle CORS for all requests
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With, Accept"
+    Header always set Access-Control-Max-Age "86400"
+    
+    # Additional CORS headers for better compatibility
+    Header always set Access-Control-Allow-Credentials "true"
+    Header always set Access-Control-Expose-Headers "Content-Length, Content-Range"
+</IfModule>
+
+# Handle preflight requests globally
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Handle OPTIONS requests for CORS preflight
+    RewriteCond %{REQUEST_METHOD} ^OPTIONS
+    RewriteRule ^(.*)$ $1 [R=200,L]
+    
+    # Ensure PHP files are processed
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# Set proper MIME types and CORS for image files
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+    <IfModule mod_headers.c>
+        Header always set Access-Control-Allow-Origin "*"
+        Header always set Access-Control-Allow-Methods "GET, OPTIONS"
+        Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+    </IfModule>
+</FilesMatch>
+
+# Set proper MIME types and CORS for PHP files
+<FilesMatch "\.php$">
+    <IfModule mod_headers.c>
+        Header always set Access-Control-Allow-Origin "*"
+        Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+        Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With, Accept"
+    </IfModule>
+</FilesMatch>
+
+# Cache control for images (optional - improves performance)
+<IfModule mod_expires.c>
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+        ExpiresActive On
+        ExpiresDefault "access plus 1 month"
+    </FilesMatch>
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>

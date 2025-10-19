@@ -1,0 +1,279 @@
+{
+    "info": {
+        "name": "Kuttysoora Seafood Backend API",
+        "description": "Postman collection for all backend endpoints.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "version": "1.0.0"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Register",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            { "key": "Content-Type", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"testpass\",\n  \"email\": \"test@example.com\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/backend/register.php",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["backend", "register.php"]
+                        }
+                    }
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            { "key": "Content-Type", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"username\": \"testuser\",\n  \"password\": \"testpass\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/backend/login.php",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["backend", "login.php"]
+                        }
+                    }
+                },
+                {
+                    "name": "Validate Token",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            { "key": "Authorization", "value": "Bearer {{token}}" },
+                            { "key": "Content-Type", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/backend/validate_token.php",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["backend", "validate_token.php"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Products",
+            "item": [
+                {
+                    "name": "Get Products",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            { "key": "Authorization", "value": "Bearer {{token}}" }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/backend/products.php",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["backend", "products.php"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Cart",
+            "item": [
+                {
+                    "name": "Get Cart",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            { "key": "Authorization", "value": "Bearer {{token}}" }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/backend/cart.php",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["backend", "cart.php"]
+                        }
+                    }
+                },
+                {
+                    "name": "Add to Cart",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            { "key": "Authorization", "value": "Bearer {{token}}" },
+                            { "key": "Content-Type", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"product_id\": 1,\n  \"quantity\": 2\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/backend/cart.php",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["backend", "cart.php"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Orders",
+            "item": [
+                {
+                    "name": "Get Orders",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            { "key": "Authorization", "value": "Bearer {{token}}" }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/backend/orders.php",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["backend", "orders.php"]
+                        }
+                    }
+                },
+                {
+                    "name": "Place Order",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            { "key": "Authorization", "value": "Bearer {{token}}" },
+                            { "key": "Content-Type", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"cart_items\": [{\n    \"product_id\": 1,\n    \"quantity\": 2\n  }],\n  \"address\": \"123 Main St\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/backend/orders.php",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["backend", "orders.php"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Admin",
+            "item": [
+                {
+                    "name": "Get Users",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            { "key": "Authorization", "value": "Bearer {{token}}" }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/backend/admin/users.php",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["backend", "admin", "users.php"]
+                        }
+                    }
+                },
+                {
+                    "name": "Promote User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            { "key": "Authorization", "value": "Bearer {{token}}" },
+                            { "key": "Content-Type", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"user_id\": 2\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/backend/admin/promote_user.php",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["backend", "admin", "promote_user.php"]
+                        }
+                    }
+                },
+                {
+                    "name": "Demote User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            { "key": "Authorization", "value": "Bearer {{token}}" },
+                            { "key": "Content-Type", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"user_id\": 2\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/backend/admin/demote_user.php",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["backend", "admin", "demote_user.php"]
+                        }
+                    }
+                },
+                {
+                    "name": "Admin Orders",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            { "key": "Authorization", "value": "Bearer {{token}}" }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/backend/admin/admin_orders.php",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["backend", "admin", "admin_orders.php"]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Order Status",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            { "key": "Authorization", "value": "Bearer {{token}}" },
+                            { "key": "Content-Type", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"order_id\": 1,\n  \"status\": \"delivered\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/backend/admin/admin_update_order_status.php",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["backend", "admin", "admin_update_order_status.php"]
+                        }
+                    }
+                },
+                {
+                    "name": "Set Admin Password",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            { "key": "Authorization", "value": "Bearer {{token}}" },
+                            { "key": "Content-Type", "value": "application/json" }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"user_id\": 1,\n  \"new_password\": \"newpass123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/backend/admin/set_admin_password.php",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["backend", "admin", "set_admin_password.php"]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "event": [],
+    "variable": [
+        { "key": "baseUrl", "value": "http://localhost" },
+        { "key": "token", "value": "" }
+    ]
+}
