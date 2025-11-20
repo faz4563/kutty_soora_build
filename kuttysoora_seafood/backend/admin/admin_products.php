@@ -126,7 +126,6 @@ switch ($method) {
         $brand = isset($data['brand']) ? trim($data['brand']) : 'Kutty Soora';
         $sku = isset($data['sku']) ? trim($data['sku']) : '';
         $availability = isset($data['availability']) ? trim($data['availability']) : 'in_stock';
-        $minimumQuantity = isset($data['minimum_quantity']) ? trim($data['minimum_quantity']) : '';
         $tags = isset($data['tags']) ? implode(',', $data['tags']) : '';
         $imageUrl = isset($data['image_url']) ? trim($data['image_url']) : '';
         
@@ -134,13 +133,13 @@ switch ($method) {
             $stmt = $pdo->prepare("
                 INSERT INTO products (
                     name, description, price, category, stock, brand, sku, 
-                    availability, minimum_quantity, tags, image_url
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    availability, tags, image_url
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ");
             
             $stmt->execute([
                 $name, $description, $price, $category, $stock, $brand, $sku,
-                $availability, $minimumQuantity, $tags, $imageUrl
+                $availability, $tags, $imageUrl
             ]);
             
             $productId = $pdo->lastInsertId();
@@ -221,7 +220,7 @@ switch ($method) {
         $updateFields = [];
         $updateParams = [];
         
-        $allowedFields = ['name', 'description', 'price', 'category', 'stock', 'brand', 'sku', 'availability', 'minimum_quantity', 'tags', 'image_url'];
+        $allowedFields = ['name', 'description', 'price', 'category', 'stock', 'brand', 'sku', 'availability', 'tags', 'image_url'];
         
         foreach ($allowedFields as $field) {
             if (isset($data[$field])) {
