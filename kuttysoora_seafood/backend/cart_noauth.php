@@ -46,7 +46,7 @@ try {
                 $imageUrl = trim($item['image_url']);
                 if (!preg_match('/^https?:\/\//', $imageUrl)) {
                     $imageUrl = preg_replace('/^(images\/)?/', '', $imageUrl);
-                    $item['image_url'] = 'http://kuttysoora.com/kuttysoora_seafood/backend/images/' . $imageUrl;
+                    $item['image_url'] = 'https://kuttysoora.com/kuttysoora_seafood/backend/images/' . $imageUrl;
                 }
             } else {
                 $item['image_url'] = '';

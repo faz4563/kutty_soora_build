@@ -51,7 +51,7 @@ if ($action === 'get_by_id') {
 		if (!preg_match('/^https?:\/\//', $imageUrl)) {
 			// Remove any leading slashes or 'images/' prefix
 			$imageUrl = preg_replace('/^(images\/)?/', '', $imageUrl);
-			$product['image_url'] = 'http://kuttysoora.com/kuttysoora_seafood/backend/images/' . $imageUrl;
+			$product['image_url'] = 'https://kuttysoora.com/kuttysoora_seafood/backend/images/' . $imageUrl;
 		} else {
 			$product['image_url'] = $imageUrl;
 		}

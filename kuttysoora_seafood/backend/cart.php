@@ -124,7 +124,7 @@ try {
             if (!preg_match('/^https?:\/\//', $imageUrl)) {
                 // Remove any leading slashes or 'images/' prefix
                 $imageUrl = preg_replace('/^(images\/)?/', '', $imageUrl);
-                $item['image_url'] = 'http://kuttysoora.com/kuttysoora_seafood/backend/images/' . $imageUrl;
+                $item['image_url'] = 'https://kuttysoora.com/kuttysoora_seafood/backend/images/' . $imageUrl;
             }
         } else {
             $item['image_url'] = '';
