@@ -1,16 +1,6 @@
 <?php
-// Enhanced CORS headers for better web compatibility
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Accept');
-header('Access-Control-Max-Age: 86400');
-header('Content-Type: application/json; charset=utf-8');
-
-// Handle preflight OPTIONS request
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    http_response_code(200);
-    exit();
-}
+// Include comprehensive CORS configuration
+require_once __DIR__ . '/cors_headers.php';
 
 require_once 'db_config.php';
 require_once 'jwt_auth.php';
@@ -179,7 +169,7 @@ $stmt = $pdo->prepare("SELECT * FROM orders WHERE user_id = ? ORDER BY id DESC")
 $stmt->execute([$user_id]);
 $orders = $stmt->fetchAll();
 foreach ($orders as &$order) {
-			$stmt2 = $pdo->prepare("SELECT oi.*, COALESCE(NULLIF(oi.product_name, ''), p.name) AS name, COALESCE(NULLIF(oi.product_image_url, ''), p.image_url) AS image_url, COALESCE(oi.unit_price, p.price) AS price FROM order_items oi LEFT JOIN products p ON oi.product_id = p.id WHERE oi.order_id = ?");
+		$stmt2 = $pdo->prepare("SELECT oi.*, COALESCE(NULLIF(oi.product_name, ''), p.name) AS name, COALESCE(NULLIF(oi.product_image_url, ''), p.image_url) AS image_url, CASE WHEN oi.unit_price > 0 THEN oi.unit_price ELSE p.price END AS price FROM order_items oi LEFT JOIN products p ON oi.product_id = p.id WHERE oi.order_id = ?");
 			$stmt2->execute([$order['id']]);
 			$items = $stmt2->fetchAll();
 			// Debug: log raw fetched items for this order to server logs

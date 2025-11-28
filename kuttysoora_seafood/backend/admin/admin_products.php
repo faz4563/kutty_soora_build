@@ -81,7 +81,7 @@ switch ($method) {
                 $imageUrl = trim($product['image_url']);
                 if (!preg_match('/^https?:\/\//', $imageUrl)) {
                     // Remove any leading slashes or 'images/' prefix
-                    $imageUrl = preg_replace('/^(images\/)?/', '', $imageUrl);
+                    $imageUrl = preg_replace('/^(\/*images\/)?\/*/', '', $imageUrl);
                     $product['image_url'] = 'https://kuttysoora.com/kuttysoora_seafood/backend/images/' . $imageUrl;
                 } else {
                     $product['image_url'] = $imageUrl;
@@ -127,6 +127,9 @@ switch ($method) {
         $sku = isset($data['sku']) ? trim($data['sku']) : '';
         $availability = isset($data['availability']) ? trim($data['availability']) : 'in_stock';
         $minimumQuantity = isset($data['minimum_quantity']) ? trim($data['minimum_quantity']) : '';
+        $healthBenefits = isset($data['health_benefits']) ? json_encode($data['health_benefits']) : null;
+        $nutritionalInfo = isset($data['nutritional_info']) ? json_encode($data['nutritional_info']) : null;
+        $productUses = isset($data['product_uses']) ? json_encode($data['product_uses']) : null;
         $tags = isset($data['tags']) ? implode(',', $data['tags']) : '';
         $imageUrl = isset($data['image_url']) ? trim($data['image_url']) : '';
         
@@ -134,13 +137,13 @@ switch ($method) {
             $stmt = $pdo->prepare("
                 INSERT INTO products (
                     name, description, price, category, stock, brand, sku, 
-                    availability, minimum_quantity, tags, image_url
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    availability, minimum_quantity, health_benefits, nutritional_info, product_uses, tags, image_url
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ");
             
             $stmt->execute([
                 $name, $description, $price, $category, $stock, $brand, $sku,
-                $availability, $minimumQuantity, $tags, $imageUrl
+                $availability, $minimumQuantity, $healthBenefits, $nutritionalInfo, $productUses, $tags, $imageUrl
             ]);
             
             $productId = $pdo->lastInsertId();
@@ -184,7 +187,7 @@ switch ($method) {
         
     case 'PUT':
         // Update existing product
-        if (!isset($data['id']) || !intval($data['id'])) {
+        if (!isset($data['id'])) {
             http_response_code(400);
             echo json_encode([
                 "error" => "Product ID is required",
@@ -193,14 +196,27 @@ switch ($method) {
             exit;
         }
         
-        // Handle both string and integer IDs
         $productId = $data['id'];
-        $productIdInt = intval($productId);
-        $productIdStr = str_pad($productIdInt, 3, '0', STR_PAD_LEFT); // Convert 46 to "046"
         
-        // Check if product exists (try both formats)
-        $checkStmt = $pdo->prepare("SELECT id FROM products WHERE id = ? OR id = ?");
-        $checkStmt->execute([$productId, $productIdStr]);
+        // Validate that product ID is provided and not empty
+        if (empty($productId)) {
+            http_response_code(400);
+            echo json_encode([
+                "error" => "Product ID is required and cannot be empty",
+                "received_id" => $data['id'],
+                "received_data" => $data
+            ]);
+            exit;
+        }
+        
+        // For numeric IDs, pad with zeros to match database format (001, 002, etc.)
+        if (is_numeric($productId)) {
+            $productId = str_pad($productId, 3, '0', STR_PAD_LEFT);
+        }
+        
+        // Check if product exists
+        $checkStmt = $pdo->prepare("SELECT id FROM products WHERE id = ?");
+        $checkStmt->execute([$productId]);
         $existingProduct = $checkStmt->fetch();
         
         if (!$existingProduct) {
@@ -208,20 +224,47 @@ switch ($method) {
             echo json_encode([
                 "error" => "Product not found",
                 "product_id" => $productId,
-                "searched_formats" => [$productId, $productIdStr],
-                "query" => "Searched for product with id: " . $productId . " and " . $productIdStr
+                "debug_info" => "Searched for ID: '$productId'"
             ]);
             exit;
         }
         
-        // Use the actual ID from database for further operations
+        // Use the confirmed product ID from database for further operations
         $actualProductId = $existingProduct['id'];
+        
+        // Check if this is a benefits-only update
+        $benefitsOnly = isset($data['benefits_only']) && $data['benefits_only'] === true;
         
         // Build update query dynamically
         $updateFields = [];
         $updateParams = [];
         
-        $allowedFields = ['name', 'description', 'price', 'category', 'stock', 'brand', 'sku', 'availability', 'minimum_quantity', 'tags', 'image_url'];
+        // Check if minimum_quantity field exists in database
+        $minimumQuantityFieldExists = false;
+        try {
+            $checkFieldStmt = $pdo->query("DESCRIBE products minimum_quantity");
+            $minimumQuantityFieldExists = $checkFieldStmt->fetch() !== false;
+            error_log("Admin Products PUT - minimum_quantity field exists: " . ($minimumQuantityFieldExists ? 'yes' : 'no'));
+        } catch (PDOException $e) {
+            error_log("Admin Products PUT - Field check error: " . $e->getMessage());
+            $minimumQuantityFieldExists = false;
+        }
+        
+        // Include fields based on update type
+        if ($benefitsOnly) {
+            // Only allow benefits fields for benefits-only updates
+            $allowedFields = ['health_benefits', 'nutritional_info', 'product_uses'];
+        } else {
+            // Include all available fields including dynamic benefits and uses
+            $allowedFields = ['name', 'description', 'price', 'category', 'stock', 'brand', 'sku', 'availability', 'tags', 'image_url'];
+            if ($minimumQuantityFieldExists) {
+                $allowedFields[] = 'minimum_quantity';
+            }
+            // Add benefits and uses fields
+            $allowedFields[] = 'health_benefits';
+            $allowedFields[] = 'nutritional_info';
+            $allowedFields[] = 'product_uses';
+        }
         
         foreach ($allowedFields as $field) {
             if (isset($data[$field])) {
@@ -232,6 +275,8 @@ switch ($method) {
                     $updateParams[] = floatval($data[$field]);
                 } elseif ($field === 'stock') {
                     $updateParams[] = intval($data[$field]);
+                } elseif (in_array($field, ['health_benefits', 'nutritional_info', 'product_uses']) && is_array($data[$field])) {
+                    $updateParams[] = json_encode($data[$field]);
                 } else {
                     $updateParams[] = trim($data[$field]);
                 }
@@ -248,6 +293,12 @@ switch ($method) {
         
         try {
             $updateQuery = "UPDATE products SET " . implode(', ', $updateFields) . " WHERE id = ?";
+            
+            // Log the query and params for debugging
+            error_log("Admin Products PUT - Query: " . $updateQuery);
+            error_log("Admin Products PUT - Params: " . json_encode($updateParams));
+            error_log("Admin Products PUT - Original Data: " . json_encode($data));
+            
             $stmt = $pdo->prepare($updateQuery);
             $stmt->execute($updateParams);
             
@@ -283,20 +334,35 @@ switch ($method) {
             ]);
             
         } catch (PDOException $e) {
+            error_log("Admin Products PUT - Database Error: " . $e->getMessage());
+            error_log("Admin Products PUT - Error Code: " . $e->getCode());
+            error_log("Admin Products PUT - SQL State: " . $e->errorInfo[0] ?? 'N/A');
+            
             http_response_code(500);
-            echo json_encode(["error" => "Failed to update product: " . $e->getMessage()]);
+            echo json_encode([
+                "error" => "Failed to update product: " . $e->getMessage(),
+                "error_code" => $e->getCode(),
+                "sql_state" => $e->errorInfo[0] ?? 'N/A',
+                "query" => $updateQuery ?? 'N/A',
+                "params_count" => count($updateParams ?? [])
+            ]);
         }
         break;
         
     case 'DELETE':
         // Delete product
-        if (!isset($data['id']) || !intval($data['id'])) {
+        if (!isset($data['id']) || empty($data['id'])) {
             http_response_code(400);
             echo json_encode(["error" => "Product ID is required"]);
             exit;
         }
         
-        $productId = intval($data['id']);
+        $productId = $data['id'];
+        
+        // For numeric IDs, pad with zeros to match database format
+        if (is_numeric($productId)) {
+            $productId = str_pad($productId, 3, '0', STR_PAD_LEFT);
+        }
         
         try {
             // Check if product exists and get image info for cleanup
