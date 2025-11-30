@@ -6,6 +6,11 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 header('Access-Control-Max-Age: 86400');
 header('Content-Type: application/json; charset=utf-8');
 
+// Performance optimizations
+header('Cache-Control: max-age=180, must-revalidate'); // 3 min cache for products
+ob_start('ob_gzhandler'); // Enable compression
+ini_set('memory_limit', '256M');
+
 // Handle preflight OPTIONS request
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     http_response_code(200);
@@ -104,9 +109,18 @@ if ($action === 'get_by_id') {
 		exit;
 	}
 	
-	$searchTerm = "%$query%";
-	$stmt = $pdo->prepare("SELECT * FROM products WHERE name LIKE ? OR description LIKE ? OR category LIKE ? ORDER BY id DESC");
-	$stmt->execute([$searchTerm, $searchTerm, $searchTerm]);
+	// Try full-text search first, fallback to LIKE search
+	$stmt = $pdo->prepare("SELECT id, name, category, description, price, stock, image_url, availability, MATCH(name, description, category) AGAINST(? IN NATURAL LANGUAGE MODE) as relevance FROM products WHERE MATCH(name, description, category) AGAINST(? IN NATURAL LANGUAGE MODE) ORDER BY relevance DESC, id DESC LIMIT 50");
+	$stmt->execute([$query, $query]);
+	$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	
+	// If no results with full-text, fallback to LIKE search
+	if (empty($products)) {
+		$searchTerm = "%$query%";
+		$stmt = $pdo->prepare("SELECT id, name, category, description, price, stock, image_url, availability FROM products WHERE name LIKE ? OR description LIKE ? OR category LIKE ? ORDER BY id DESC LIMIT 50");
+		$stmt->execute([$searchTerm, $searchTerm, $searchTerm]);
+		$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	}
 	$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	
 	// Ensure proper type casting for numeric fields and format image_url
@@ -134,30 +148,30 @@ if ($action === 'get_by_id') {
 	exit;
 }
 
-// Default action: list all products
-$stmt = $pdo->query("SELECT * FROM products ORDER BY id DESC");
+// Default action: list products with limit for performance
+$limit = isset($_GET['limit']) ? min(100, max(1, (int)$_GET['limit'])) : 50;
+$stmt = $pdo->prepare("SELECT id, name, category, description, price, stock, image_url, availability, brand FROM products ORDER BY id DESC LIMIT ?");
+$stmt->execute([$limit]);
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Ensure proper type casting for numeric fields and format image_url
+// Optimized product processing with batch operations
+$baseImageUrl = 'https://kuttysoora.com/kuttysoora_seafood/backend/images/';
+
 foreach ($products as &$product) {
+    // Fast type casting
     $product['id'] = (int)$product['id'];
     $product['price'] = (float)$product['price'];
     $product['stock'] = (int)$product['stock'];
     
-    // Format image_url with full backend/images/ path if it's a relative path
-    if (isset($product['image_url']) && !empty($product['image_url'])) {
-        $imageUrl = trim($product['image_url']);
-        if (!preg_match('/^https?:\/\//', $imageUrl)) {
-            // Remove any leading slashes or 'images/' prefix
-            $imageUrl = preg_replace('/^(images\/)?/', '', $imageUrl);
-            $product['image_url'] = 'https://kuttysoora.com/kuttysoora_seafood/backend/images/' . $imageUrl;
-        } else {
-            $product['image_url'] = $imageUrl;
-        }
-    } else {
+    // Optimized image URL processing
+    $imageUrl = $product['image_url'] ?? '';
+    if ($imageUrl && !str_starts_with($imageUrl, 'http')) {
+        $product['image_url'] = $baseImageUrl . ltrim($imageUrl, '/images/');
+    } elseif (!$imageUrl) {
         $product['image_url'] = '';
     }
 }
+unset($product); // Clean up reference
 
 echo json_encode([
     "products" => $products,

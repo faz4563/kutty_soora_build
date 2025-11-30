@@ -6,6 +6,11 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 header('Access-Control-Max-Age: 86400');
 header('Content-Type: application/json; charset=utf-8');
 
+// Performance headers
+header('Cache-Control: max-age=300, must-revalidate'); // 5 min cache
+ob_start('ob_gzhandler'); // Enable compression
+ini_set('memory_limit', '256M'); // Increase memory for large datasets
+
 // Handle preflight OPTIONS request
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     http_response_code(200);
@@ -20,6 +25,31 @@ ini_set('log_errors', 1);
 try {
     require_once '../db_config.php';
     require_once '../jwt_auth.php';
+    
+    // Performance optimization function
+    function optimizeProductData(&$products) {
+        $baseImageUrl = 'https://kuttysoora.com/kuttysoora_seafood/backend/images/';
+        
+        foreach ($products as &$product) {
+            // Fast type casting
+            $product['id'] = (int)$product['id'];
+            $product['price'] = (float)$product['price'];
+            $product['stock'] = (int)$product['stock'];
+            
+            // Optimized image URL processing
+            $imageUrl = $product['image_url'] ?? '';
+            if ($imageUrl && !str_starts_with($imageUrl, 'http')) {
+                $product['image_url'] = $baseImageUrl . ltrim($imageUrl, '/images/');
+            } elseif (!$imageUrl) {
+                $product['image_url'] = '';
+            }
+            
+            // Add consistent defaults
+            $product['brand'] = $product['brand'] ?? 'Kutty Soora';
+            $product['sku'] = $product['sku'] ?? '';
+        }
+        unset($product);
+    }
 
     // Require JWT authentication and admin privileges
     $tokenPayload = JWTAuth::requireAuth();
@@ -60,40 +90,38 @@ switch ($method) {
             $params[] = $category;
         }
         
-        // Get total count
-        $countStmt = $pdo->prepare("SELECT COUNT(*) FROM products $whereClause");
-        $countStmt->execute($params);
-        $totalProducts = $countStmt->fetchColumn();
-        
-        // Get products
-        $stmt = $pdo->prepare("SELECT * FROM products $whereClause ORDER BY id DESC LIMIT ? OFFSET ?");
-        $stmt->execute(array_merge($params, [$limit, $offset]));
-        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
-        // Ensure proper type casting for numeric fields and format image_url
-        foreach ($products as &$product) {
-            $product['id'] = (int)$product['id'];
-            $product['price'] = (float)$product['price'];
-            $product['stock'] = (int)$product['stock'];
+        // Optimized queries - get count and products in single query when possible
+        if (empty($search) && empty($category) && $page == 1) {
+            // Fast path for first page with no filters
+            $stmt = $pdo->prepare("SELECT SQL_CALC_FOUND_ROWS id, name, category, description, price, stock, image_url, availability FROM products ORDER BY id DESC LIMIT ?");
+            $stmt->execute([$limit]);
+            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             
-            // Format image_url with full backend/images/ path if it's a relative path
-            if (isset($product['image_url']) && !empty($product['image_url'])) {
-                $imageUrl = trim($product['image_url']);
-                if (!preg_match('/^https?:\/\//', $imageUrl)) {
-                    // Remove any leading slashes or 'images/' prefix
-                    $imageUrl = preg_replace('/^(\/*images\/)?\/*/', '', $imageUrl);
-                    $product['image_url'] = 'https://kuttysoora.com/kuttysoora_seafood/backend/images/' . $imageUrl;
-                } else {
-                    $product['image_url'] = $imageUrl;
-                }
-            } else {
-                $product['image_url'] = '';
-            }
+            $countStmt = $pdo->query("SELECT FOUND_ROWS()");
+            $totalProducts = $countStmt->fetchColumn();
+        } else {
+            // Selective fields query for better performance
+            $selectFields = "id, name, category, description, price, stock, image_url, availability";
+            
+            $countStmt = $pdo->prepare("SELECT COUNT(*) FROM products $whereClause");
+            $countStmt->execute($params);
+            $totalProducts = $countStmt->fetchColumn();
+            
+            $stmt = $pdo->prepare("SELECT $selectFields FROM products $whereClause ORDER BY id DESC LIMIT ? OFFSET ?");
+            $stmt->execute(array_merge($params, [$limit, $offset]));
+            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         
-        // Get categories for filter
-        $categoriesStmt = $pdo->query("SELECT DISTINCT category FROM products WHERE category IS NOT NULL AND category != '' ORDER BY category");
-        $categories = $categoriesStmt->fetchAll(PDO::FETCH_COLUMN);
+        // Use optimized batch processing
+        optimizeProductData($products);
+        
+        // Cached categories query - only run when needed
+        static $cachedCategories = null;
+        if ($cachedCategories === null) {
+            $categoriesStmt = $pdo->query("SELECT DISTINCT category FROM products WHERE category IS NOT NULL AND category != '' ORDER BY category");
+            $cachedCategories = $categoriesStmt->fetchAll(PDO::FETCH_COLUMN);
+        }
+        $categories = $cachedCategories;
         
         echo json_encode([
             "products" => $products,
