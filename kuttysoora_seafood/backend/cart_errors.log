@@ -1156,3 +1156,1643 @@
 [28-Nov-2025 03:53:25 Europe/Berlin] Cart.php - Authenticated user_id: 2
 [28-Nov-2025 03:53:25 Europe/Berlin] Cart.php - Action: list
 [28-Nov-2025 03:53:25 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 14:36:50 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:36:50 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 14:36:50 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:36:50 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:36:50 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:36:50 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 14:36:50 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 14:36:50 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 14:36:50 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 14:36:50 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 14:36:50 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 14:36:51 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:36:51 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 14:36:51 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:36:51 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:36:51 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:36:51 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 14:36:51 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 14:36:55 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:36:55 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 14:36:55 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:36:55 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:36:55 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:36:55 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 14:36:55 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 14:36:55 Europe/Berlin] Cart.php - Add action: product_id=44, quantity=1
+[01-Dec-2025 14:36:55 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 14:36:55 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 14:36:55 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 14:36:55 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:36:55 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 14:36:55 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:36:55 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:36:55 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:36:55 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 14:36:55 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 14:37:03 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:37:03 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 14:37:03 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:37:03 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:37:03 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:37:03 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 14:37:03 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 14:37:10 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:37:10 Europe/Berlin] Cart.php - Request body: {"action":"clear"}
+[01-Dec-2025 14:37:10 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:37:10 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:37:10 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:37:10 Europe/Berlin] Cart.php - Action: clear
+[01-Dec-2025 14:37:10 Europe/Berlin] Cart.php - Data: {"action":"clear"}
+[01-Dec-2025 14:51:32 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:51:32 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 14:51:32 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:51:32 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:51:32 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:51:32 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 14:51:32 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 14:51:39 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:51:39 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 14:51:39 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:51:39 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:51:39 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:51:39 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 14:51:39 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 14:51:39 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 14:51:39 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 14:51:39 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 14:51:39 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 14:51:39 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:51:39 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 14:51:39 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:51:39 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:51:39 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:51:39 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 14:51:39 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 14:51:40 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:51:40 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 14:51:40 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:51:40 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:51:40 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:51:40 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 14:51:40 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 14:51:40 Europe/Berlin] Cart.php - Add action: product_id=44, quantity=1
+[01-Dec-2025 14:51:40 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 14:51:40 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 14:51:40 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 14:51:40 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:51:40 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 14:51:40 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:51:40 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:51:40 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:51:40 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 14:51:40 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 14:51:44 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:51:44 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 14:51:44 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:51:44 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:51:44 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:51:44 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 14:51:44 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 14:59:36 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:59:36 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 14:59:36 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:59:36 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:59:36 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:59:36 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 14:59:36 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 14:59:51 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:59:51 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 14:59:51 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:59:51 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:59:51 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:59:51 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 14:59:51 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 14:59:51 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 14:59:51 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 14:59:51 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 14:59:51 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 14:59:51 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:59:51 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 14:59:51 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:59:51 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:59:51 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:59:51 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 14:59:51 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 14:59:53 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:59:53 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 14:59:53 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:59:53 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:59:53 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:59:53 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 14:59:53 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 14:59:53 Europe/Berlin] Cart.php - Add action: product_id=44, quantity=1
+[01-Dec-2025 14:59:53 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 14:59:53 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 14:59:53 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 14:59:53 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:59:53 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 14:59:53 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:59:53 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:59:53 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:59:53 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 14:59:53 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 14:59:58 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 14:59:58 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 14:59:58 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 14:59:58 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 14:59:58 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 14:59:58 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 14:59:58 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:02:23 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:02:23 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:02:23 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:02:23 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:02:23 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:02:23 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:02:23 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:02:34 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:02:34 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:02:34 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:02:34 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:02:34 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:02:34 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:02:34 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:02:34 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 15:02:34 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:02:34 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:02:34 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:02:34 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:02:34 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:02:34 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:02:34 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:02:34 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:02:34 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:02:34 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:02:37 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:02:37 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 15:02:37 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:02:37 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:02:37 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:02:37 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:02:37 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 15:02:37 Europe/Berlin] Cart.php - Add action: product_id=44, quantity=1
+[01-Dec-2025 15:02:37 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:02:37 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:02:37 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:02:37 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:02:37 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:02:37 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:02:37 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:02:37 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:02:37 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:02:37 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:02:41 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:02:41 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:02:41 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:02:41 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:02:41 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:02:41 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:02:41 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:04:28 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:04:28 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:04:28 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:04:28 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:04:28 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:04:28 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:04:28 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:04:37 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:04:37 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:04:37 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:04:37 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:04:37 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:04:37 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:04:37 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:04:37 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 15:04:37 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:04:37 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:04:37 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:04:37 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:04:37 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:04:37 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:04:37 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:04:37 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:04:37 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:04:37 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:04:41 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:04:41 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 15:04:41 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:04:41 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:04:41 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:04:41 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:04:41 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 15:04:41 Europe/Berlin] Cart.php - Add action: product_id=45, quantity=1
+[01-Dec-2025 15:04:41 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:04:41 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:04:41 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:04:42 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:04:42 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:04:42 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:04:42 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:04:42 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:04:42 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:04:42 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:04:46 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:04:46 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:04:46 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:04:46 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:04:46 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:04:46 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:04:46 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:15:47 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:15:47 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:15:47 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:15:47 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:15:47 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:15:47 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:15:47 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:15:51 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:15:51 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:15:51 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:15:51 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:15:51 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:15:51 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:15:51 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:16:08 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:16:08 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:16:08 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:16:08 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:16:08 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:16:08 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:16:08 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:16:08 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 15:16:08 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:16:08 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:16:08 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:16:09 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:16:09 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:16:09 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:16:09 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:16:09 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:16:09 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:16:09 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:16:13 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:16:13 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:16:13 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:16:13 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:16:13 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:16:13 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:16:13 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:16:27 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:16:27 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 15:16:27 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:16:27 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:16:27 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:16:27 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:16:27 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 15:16:27 Europe/Berlin] Cart.php - Add action: product_id=45, quantity=1
+[01-Dec-2025 15:16:27 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:16:27 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:16:27 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:16:27 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:16:27 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:16:27 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:16:27 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:16:27 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:16:27 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:16:27 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:16:33 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:16:33 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:16:33 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:16:33 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:16:33 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:16:33 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:16:33 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:16:55 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:16:55 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:16:55 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:16:55 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:16:55 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:16:55 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:16:55 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:16:55 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:16:55 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:16:55 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:16:55 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:16:55 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:16:55 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:16:55 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:16:55 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:16:55 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:16:55 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:16:55 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:16:55 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:16:55 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:16:55 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:17:41 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:17:41 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:17:41 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:17:41 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:17:41 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:17:41 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:17:41 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:17:41 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:17:41 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:17:41 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:17:41 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:17:41 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:17:41 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:17:41 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:17:41 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:17:41 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:17:41 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:17:41 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:17:41 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:17:41 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:17:41 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:17:44 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:17:44 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:17:44 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:17:44 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:17:44 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:17:44 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:17:44 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:18:07 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:07 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:18:07 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:07 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:18:07 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:07 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:18:07 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:07 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:18:07 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:18:22 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:22 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:18:22 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:22 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:18:22 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:22 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:18:22 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:22 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:18:22 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:18:26 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:26 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:18:26 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:26 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:26 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:26 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:18:26 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:18:27 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:27 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:18:27 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:27 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:27 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:27 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:18:27 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:18:27 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:27 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:18:27 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:27 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:27 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:27 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:18:27 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:18:27 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:27 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:18:27 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:27 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:27 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:27 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:18:27 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:18:33 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:33 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:18:33 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:33 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:33 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:33 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:18:33 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:18:33 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 15:18:33 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:18:33 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:18:33 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:18:34 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:34 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:18:34 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:34 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:34 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:34 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:18:34 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:18:37 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:37 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 15:18:37 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:37 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:37 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:37 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:18:37 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 15:18:37 Europe/Berlin] Cart.php - Add action: product_id=44, quantity=1
+[01-Dec-2025 15:18:37 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:18:37 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:18:37 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:18:38 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:38 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:18:38 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:38 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:38 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:38 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:18:38 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:18:44 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:18:44 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:18:44 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:18:44 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:18:44 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:18:44 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:18:44 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:19:56 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:19:56 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:19:56 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:19:56 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:19:56 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:19:56 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:19:56 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:19:59 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:19:59 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:19:59 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:19:59 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:19:59 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:19:59 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:19:59 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:29:33 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:29:33 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:29:33 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:29:33 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:29:33 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:29:33 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:29:33 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:29:33 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 15:29:33 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:29:33 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:29:33 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:29:33 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:29:33 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:29:33 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:29:33 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:29:33 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:29:33 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:29:33 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:29:36 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:29:36 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":43,"quantity":1}
+[01-Dec-2025 15:29:36 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:29:36 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:29:36 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:29:36 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:29:36 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":43,"quantity":1}
+[01-Dec-2025 15:29:36 Europe/Berlin] Cart.php - Add action: product_id=43, quantity=1
+[01-Dec-2025 15:29:36 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:29:36 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:29:36 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:29:36 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:29:36 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:29:36 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:29:36 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:29:36 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:29:36 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:29:36 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:34:32 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:34:32 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:34:32 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:34:32 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:34:32 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:34:32 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:34:32 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:34:32 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 15:34:32 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:34:32 Europe/Berlin] Cart.php - Product already in cart, updating quantity
+[01-Dec-2025 15:34:32 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:34:32 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:34:32 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:34:32 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:34:32 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:34:32 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:34:32 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:34:32 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:34:42 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:34:42 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":37,"quantity":1}
+[01-Dec-2025 15:34:42 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:34:42 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:34:42 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:34:42 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:34:42 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":37,"quantity":1}
+[01-Dec-2025 15:34:42 Europe/Berlin] Cart.php - Add action: product_id=37, quantity=1
+[01-Dec-2025 15:34:42 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:34:42 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:34:42 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:34:42 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:34:42 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:34:42 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:34:42 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:34:42 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:34:42 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:34:42 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:40:39 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:40:39 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:40:39 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:40:39 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:40:39 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:40:39 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:40:39 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:40:39 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 15:40:39 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:40:39 Europe/Berlin] Cart.php - Product already in cart, updating quantity
+[01-Dec-2025 15:40:39 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:40:39 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:40:39 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:40:39 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:40:39 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:40:39 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:40:39 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:40:39 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:40:41 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:40:41 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 15:40:41 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:40:41 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:40:41 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:40:41 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:40:41 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 15:40:41 Europe/Berlin] Cart.php - Add action: product_id=44, quantity=1
+[01-Dec-2025 15:40:41 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:40:41 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:40:41 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:40:41 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:40:41 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:40:41 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:40:41 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:40:41 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:40:41 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:40:41 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:50:26 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:50:26 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:50:26 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:50:26 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:50:26 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:50:26 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:50:26 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:50:26 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 15:50:26 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:50:26 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:50:26 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:50:26 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:50:26 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:50:26 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:50:26 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:50:26 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:50:26 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:50:26 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:50:28 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:50:28 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 15:50:28 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:50:28 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:50:28 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:50:28 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:50:28 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 15:50:28 Europe/Berlin] Cart.php - Add action: product_id=44, quantity=1
+[01-Dec-2025 15:50:28 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:50:28 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:50:28 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:50:28 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:50:28 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:50:28 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:50:28 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:50:28 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:50:28 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:50:28 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:50:34 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:50:34 Europe/Berlin] Cart.php - Request body: {"action":"update","product_id":44,"quantity":2}
+[01-Dec-2025 15:50:34 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:50:34 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:50:34 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:50:34 Europe/Berlin] Cart.php - Action: update
+[01-Dec-2025 15:50:34 Europe/Berlin] Cart.php - Data: {"action":"update","product_id":44,"quantity":2}
+[01-Dec-2025 15:50:40 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:50:40 Europe/Berlin] Cart.php - Request body: {"action":"update","product_id":46,"quantity":2}
+[01-Dec-2025 15:50:40 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:50:40 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:50:40 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:50:40 Europe/Berlin] Cart.php - Action: update
+[01-Dec-2025 15:50:40 Europe/Berlin] Cart.php - Data: {"action":"update","product_id":46,"quantity":2}
+[01-Dec-2025 15:52:32 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:52:32 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:52:32 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:52:32 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:52:32 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:52:32 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:52:32 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:52:34 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:52:34 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:52:34 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:52:34 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:52:34 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:52:34 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:52:34 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:52:43 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:52:43 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:52:43 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:52:43 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:52:43 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:52:43 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:52:43 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:52:43 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 15:52:43 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:52:43 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:52:43 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:52:44 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:52:44 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:52:44 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:52:44 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:52:44 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:52:44 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:52:44 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:52:48 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:52:48 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 15:52:48 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:52:48 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:52:48 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:52:48 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:52:48 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 15:52:48 Europe/Berlin] Cart.php - Add action: product_id=45, quantity=1
+[01-Dec-2025 15:52:48 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:52:48 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:52:48 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:52:48 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:52:48 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:52:48 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:52:48 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:52:48 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:52:48 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:52:48 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:57:41 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:57:41 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:57:41 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:57:41 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:57:41 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:57:41 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:57:41 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:57:46 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:57:46 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:57:46 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:57:46 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:57:46 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:57:46 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:57:46 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:57:46 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 15:57:46 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:57:46 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:57:46 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:57:46 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:57:46 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:57:46 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:57:46 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:57:46 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:57:46 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:57:46 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:57:48 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:57:48 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 15:57:48 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:57:48 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:57:48 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:57:48 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:57:48 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 15:57:48 Europe/Berlin] Cart.php - Add action: product_id=44, quantity=1
+[01-Dec-2025 15:57:48 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:57:48 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:57:48 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:57:48 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:57:48 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:57:48 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:57:48 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:57:48 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:57:48 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:57:48 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:58:47 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:58:47 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:58:47 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:58:47 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:58:47 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:58:47 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:58:47 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:58:58 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:58:58 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:58:58 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:58:58 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:58:58 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:58:58 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:58:58 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 15:58:58 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 15:58:58 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:58:58 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:58:58 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:58:58 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:58:58 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:58:58 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:58:58 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:58:58 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:58:58 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:58:58 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:59:03 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:59:03 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":35,"quantity":1}
+[01-Dec-2025 15:59:03 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:59:03 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:59:03 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:59:03 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:59:03 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":35,"quantity":1}
+[01-Dec-2025 15:59:03 Europe/Berlin] Cart.php - Add action: product_id=35, quantity=1
+[01-Dec-2025 15:59:03 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:59:03 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:59:03 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:59:03 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:59:03 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:59:03 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:59:03 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:59:03 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:59:03 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:59:03 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:59:08 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:59:08 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":33,"quantity":1}
+[01-Dec-2025 15:59:08 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:59:08 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:59:08 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:59:08 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:59:08 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":33,"quantity":1}
+[01-Dec-2025 15:59:08 Europe/Berlin] Cart.php - Add action: product_id=33, quantity=1
+[01-Dec-2025 15:59:08 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:59:08 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:59:08 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:59:08 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:59:08 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:59:08 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:59:08 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:59:08 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:59:08 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:59:08 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 15:59:13 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:59:13 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":8,"quantity":1}
+[01-Dec-2025 15:59:13 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:59:13 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:59:13 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:59:13 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 15:59:13 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":8,"quantity":1}
+[01-Dec-2025 15:59:13 Europe/Berlin] Cart.php - Add action: product_id=8, quantity=1
+[01-Dec-2025 15:59:13 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 15:59:13 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 15:59:13 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 15:59:13 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 15:59:13 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 15:59:13 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 15:59:13 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 15:59:13 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 15:59:13 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 15:59:13 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 16:04:31 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 16:04:31 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 16:04:31 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 16:04:31 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 16:04:31 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 16:04:31 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 16:04:31 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 16:04:49 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 16:04:49 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 16:04:49 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 16:04:49 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 16:04:49 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 16:04:49 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 16:04:49 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 16:05:02 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 16:05:02 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 16:05:02 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 16:05:02 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 16:05:02 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 16:05:02 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 16:05:02 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 16:05:02 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 16:05:02 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 16:05:02 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 16:05:02 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 16:05:02 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 16:05:02 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 16:05:02 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 16:05:02 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 16:05:02 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 16:05:02 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 16:05:02 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 16:05:04 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 16:05:04 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 16:05:04 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 16:05:04 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 16:05:04 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 16:05:04 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 16:05:04 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 16:05:04 Europe/Berlin] Cart.php - Add action: product_id=44, quantity=1
+[01-Dec-2025 16:05:04 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 16:05:04 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 16:05:04 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 16:05:04 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 16:05:04 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 16:05:04 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 16:05:04 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 16:05:04 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 16:05:04 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 16:05:04 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 16:15:57 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 16:15:57 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 16:15:57 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 16:15:57 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 16:15:57 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 16:15:57 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 16:15:57 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 16:15:57 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 16:15:57 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 16:15:57 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 16:15:57 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 16:15:57 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 16:15:57 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 16:15:57 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 16:15:57 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 16:15:57 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 16:15:57 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 16:15:57 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 16:15:58 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 16:15:58 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 16:15:58 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 16:15:58 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 16:15:58 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 16:15:58 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 16:15:58 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 16:15:58 Europe/Berlin] Cart.php - Add action: product_id=44, quantity=1
+[01-Dec-2025 16:15:58 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 16:15:58 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 16:15:58 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 16:15:58 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 16:15:58 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 16:15:58 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 16:15:58 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 16:15:58 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 16:15:58 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 16:15:58 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 16:16:01 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 16:16:01 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":41,"quantity":1}
+[01-Dec-2025 16:16:01 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 16:16:01 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 16:16:01 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 16:16:01 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 16:16:01 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":41,"quantity":1}
+[01-Dec-2025 16:16:01 Europe/Berlin] Cart.php - Add action: product_id=41, quantity=1
+[01-Dec-2025 16:16:01 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 16:16:01 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 16:16:01 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 16:16:01 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 16:16:01 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 16:16:01 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 16:16:01 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 16:16:01 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 16:16:01 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 16:16:01 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:19:47 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:19:47 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 18:19:47 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:19:47 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:19:47 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:19:47 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 18:19:47 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 18:19:47 Europe/Berlin] Cart.php - Add action: product_id=45, quantity=1
+[01-Dec-2025 18:19:47 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 18:19:47 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 18:19:47 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 18:19:47 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:19:47 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:19:47 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:19:47 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:19:47 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:19:47 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:19:47 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:19:50 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:19:50 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 18:19:50 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:19:50 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:19:50 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:19:50 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 18:19:50 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 18:19:50 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 18:19:50 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 18:19:50 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 18:19:50 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 18:19:50 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:19:50 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:19:50 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:19:50 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:19:50 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:19:50 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:19:50 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:20:30 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:20:30 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:20:30 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:20:30 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:20:30 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:20:30 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:20:30 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:29:47 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:29:47 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:29:47 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:29:47 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:29:47 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:29:47 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:29:47 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:30:00 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:30:00 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":41,"quantity":1}
+[01-Dec-2025 18:30:00 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:30:00 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:30:00 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:30:00 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 18:30:00 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":41,"quantity":1}
+[01-Dec-2025 18:30:00 Europe/Berlin] Cart.php - Add action: product_id=41, quantity=1
+[01-Dec-2025 18:30:00 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 18:30:00 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 18:30:00 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 18:30:00 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:30:00 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:30:00 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:30:00 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:30:00 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:30:00 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:30:00 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:30:01 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:30:01 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":42,"quantity":1}
+[01-Dec-2025 18:30:01 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:30:01 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:30:01 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:30:01 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 18:30:01 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":42,"quantity":1}
+[01-Dec-2025 18:30:01 Europe/Berlin] Cart.php - Add action: product_id=42, quantity=1
+[01-Dec-2025 18:30:01 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 18:30:01 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 18:30:01 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 18:30:01 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:30:01 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:30:01 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:30:01 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:30:01 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:30:01 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:30:01 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:32:25 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:32:25 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:32:25 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:32:25 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 1
+[01-Dec-2025 18:32:25 Europe/Berlin] Cart.php - Authenticated user_id: 1
+[01-Dec-2025 18:32:25 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:32:25 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:33:05 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:33:05 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:33:05 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:33:05 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:33:05 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:33:05 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:33:05 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 1
+[01-Dec-2025 18:33:05 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 1
+[01-Dec-2025 18:33:05 Europe/Berlin] Cart.php - Authenticated user_id: 1
+[01-Dec-2025 18:33:05 Europe/Berlin] Cart.php - Authenticated user_id: 1
+[01-Dec-2025 18:33:05 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:33:05 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:33:05 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:33:05 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:54:04 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:54:04 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 18:54:04 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:54:04 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:54:04 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:54:04 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 18:54:04 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 18:54:04 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 18:54:04 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 18:54:04 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 18:54:04 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 18:54:04 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:54:04 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:54:04 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:54:04 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:54:04 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:54:04 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:54:04 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:54:10 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:54:10 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 18:54:10 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:54:10 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:54:10 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:54:10 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 18:54:10 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 18:54:10 Europe/Berlin] Cart.php - Add action: product_id=45, quantity=1
+[01-Dec-2025 18:54:10 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 18:54:10 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 18:54:10 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 18:54:11 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:54:11 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:54:11 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:54:11 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:54:11 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:54:11 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:54:11 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:55:29 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:55:29 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:55:29 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:55:29 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 1
+[01-Dec-2025 18:55:29 Europe/Berlin] Cart.php - Authenticated user_id: 1
+[01-Dec-2025 18:55:29 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:55:29 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:55:29 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:55:29 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:55:29 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:55:29 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 1
+[01-Dec-2025 18:55:29 Europe/Berlin] Cart.php - Authenticated user_id: 1
+[01-Dec-2025 18:55:29 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:55:29 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:56:20 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:56:20 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:56:20 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:56:20 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 1
+[01-Dec-2025 18:56:20 Europe/Berlin] Cart.php - Authenticated user_id: 1
+[01-Dec-2025 18:56:20 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:56:20 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:56:24 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:56:24 Europe/Berlin] Cart.php - Request body: {"action":"update","product_id":28,"quantity":2}
+[01-Dec-2025 18:56:24 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:56:24 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 1
+[01-Dec-2025 18:56:24 Europe/Berlin] Cart.php - Authenticated user_id: 1
+[01-Dec-2025 18:56:24 Europe/Berlin] Cart.php - Action: update
+[01-Dec-2025 18:56:24 Europe/Berlin] Cart.php - Data: {"action":"update","product_id":28,"quantity":2}
+[01-Dec-2025 18:58:31 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:58:31 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:58:31 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:58:31 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:58:31 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:58:31 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:58:31 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:58:40 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:58:40 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 18:58:40 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:58:40 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:58:40 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:58:40 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 18:58:40 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 18:58:40 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 18:58:40 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 18:58:40 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 18:58:40 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 18:58:40 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:58:40 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:58:40 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:58:40 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:58:40 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:58:40 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:58:40 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:58:43 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:58:43 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 18:58:43 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:58:43 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:58:43 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:58:43 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 18:58:43 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 18:58:43 Europe/Berlin] Cart.php - Add action: product_id=45, quantity=1
+[01-Dec-2025 18:58:43 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 18:58:43 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 18:58:43 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 18:58:43 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:58:43 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:58:43 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:58:43 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:58:43 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:58:43 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:58:43 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:59:35 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:59:35 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:59:35 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:59:35 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:59:35 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:59:35 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:59:35 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 18:59:43 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:59:43 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 18:59:43 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:59:43 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Product already in cart, updating quantity
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:59:43 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:59:43 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:59:43 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:59:44 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:59:44 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:59:44 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:59:44 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:59:44 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:59:44 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:59:44 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 18:59:47 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:59:47 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 18:59:47 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:59:47 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:59:47 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:59:47 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 18:59:47 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 18:59:47 Europe/Berlin] Cart.php - Add action: product_id=45, quantity=1
+[01-Dec-2025 18:59:47 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 18:59:47 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 18:59:47 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 18:59:47 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 18:59:47 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 18:59:47 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 18:59:47 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 18:59:47 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 18:59:47 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 18:59:47 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:00:26 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:00:26 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:00:26 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:00:26 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:00:26 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:00:26 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:00:26 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:00:32 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:00:32 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:00:32 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:00:32 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:00:32 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:00:32 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:00:32 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:00:32 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 19:00:32 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:00:32 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:00:32 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:00:32 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:00:32 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:00:32 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:00:32 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:00:32 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:00:32 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:00:32 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:00:38 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:00:38 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 19:00:38 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:00:38 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:00:38 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:00:38 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:00:38 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 19:00:38 Europe/Berlin] Cart.php - Add action: product_id=45, quantity=1
+[01-Dec-2025 19:00:38 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:00:38 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:00:38 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:00:38 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:00:38 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:00:38 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:00:38 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:00:38 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:00:38 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:00:38 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:01:37 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:01:37 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:01:37 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:01:37 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:01:37 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:01:37 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:01:37 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:01:37 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 19:01:37 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:01:37 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:01:37 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:01:37 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:01:37 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:01:37 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:01:37 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:01:37 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:01:37 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:01:37 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:01:44 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:01:44 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 19:01:44 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:01:44 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:01:44 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:01:44 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:01:44 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 19:01:44 Europe/Berlin] Cart.php - Add action: product_id=45, quantity=1
+[01-Dec-2025 19:01:44 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:01:44 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:01:44 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:01:44 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:01:44 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:01:44 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:01:44 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:01:44 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:01:44 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:01:44 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:08:05 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:08:05 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:08:05 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:08:05 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:08:05 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:08:05 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:08:05 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:08:09 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:08:09 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:08:09 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:08:09 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:08:09 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:08:09 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:08:09 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:08:09 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 19:08:09 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:08:09 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:08:09 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:08:10 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:08:10 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:08:10 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:08:10 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:08:10 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:08:10 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:08:10 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:08:13 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:08:13 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:08:13 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:08:13 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:08:13 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:08:13 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:08:13 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:08:13 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 19:08:13 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:08:13 Europe/Berlin] Cart.php - Product already in cart, updating quantity
+[01-Dec-2025 19:08:13 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:08:14 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:08:14 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:08:14 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:08:14 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:08:14 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:08:14 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:08:14 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:08:16 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:08:16 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 19:08:16 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:08:16 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:08:16 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:08:16 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:08:16 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 19:08:16 Europe/Berlin] Cart.php - Add action: product_id=45, quantity=1
+[01-Dec-2025 19:08:16 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:08:16 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:08:16 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:08:17 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:08:17 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:08:17 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:08:17 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:08:17 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:08:17 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:08:17 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:12:26 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:12:26 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:12:26 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:12:26 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:12:26 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:12:26 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:12:26 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:12:26 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 19:12:26 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:12:26 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:12:26 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:12:27 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:12:27 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:12:27 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:12:27 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:12:27 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:12:27 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:12:27 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:12:36 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:12:36 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":43,"quantity":1}
+[01-Dec-2025 19:12:36 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:12:36 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:12:36 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:12:36 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:12:36 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":43,"quantity":1}
+[01-Dec-2025 19:12:36 Europe/Berlin] Cart.php - Add action: product_id=43, quantity=1
+[01-Dec-2025 19:12:36 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:12:36 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:12:36 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:12:37 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:12:37 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:12:37 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:12:37 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:12:37 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:12:37 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:12:37 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:18:35 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:18:35 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":36,"quantity":1}
+[01-Dec-2025 19:18:35 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:18:35 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:18:35 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:18:35 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:18:35 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":36,"quantity":1}
+[01-Dec-2025 19:18:35 Europe/Berlin] Cart.php - Add action: product_id=36, quantity=1
+[01-Dec-2025 19:18:35 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:18:35 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:18:35 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:18:36 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:18:36 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:18:36 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:18:36 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:18:36 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:18:36 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:18:36 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:18:53 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:18:53 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":12,"quantity":1}
+[01-Dec-2025 19:18:53 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:18:53 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:18:53 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:18:53 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:18:53 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":12,"quantity":1}
+[01-Dec-2025 19:18:53 Europe/Berlin] Cart.php - Add action: product_id=12, quantity=1
+[01-Dec-2025 19:18:53 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:18:53 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:18:53 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:18:54 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:18:54 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:18:54 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:18:54 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:18:54 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:18:54 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:18:54 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:20:49 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:20:49 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:20:49 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:20:49 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:20:49 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:20:49 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:20:49 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:20:49 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 19:20:49 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:20:49 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:20:49 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:20:50 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:20:50 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:20:50 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:20:50 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:20:50 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:20:50 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:20:50 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:21:16 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:21:16 Europe/Berlin] Cart.php - Request body: {"action":"update","product_id":46,"quantity":2}
+[01-Dec-2025 19:21:16 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:21:16 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:21:16 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:21:16 Europe/Berlin] Cart.php - Action: update
+[01-Dec-2025 19:21:16 Europe/Berlin] Cart.php - Data: {"action":"update","product_id":46,"quantity":2}
+[01-Dec-2025 19:23:20 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:23:20 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:23:20 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:23:20 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:23:20 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:23:20 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:23:20 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:23:20 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 19:23:20 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:23:20 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:23:20 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:23:20 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:23:20 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:23:20 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:23:20 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:23:20 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:23:20 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:23:20 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:23:33 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:23:33 Europe/Berlin] Cart.php - Request body: {"action":"update","product_id":46,"quantity":2}
+[01-Dec-2025 19:23:33 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:23:33 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:23:33 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:23:33 Europe/Berlin] Cart.php - Action: update
+[01-Dec-2025 19:23:33 Europe/Berlin] Cart.php - Data: {"action":"update","product_id":46,"quantity":2}
+[01-Dec-2025 19:28:19 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:28:19 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":37,"quantity":1}
+[01-Dec-2025 19:28:19 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:28:19 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:28:19 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:28:19 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:28:19 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":37,"quantity":1}
+[01-Dec-2025 19:28:19 Europe/Berlin] Cart.php - Add action: product_id=37, quantity=1
+[01-Dec-2025 19:28:19 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:28:19 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:28:19 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:28:19 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:28:19 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:28:19 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:28:19 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:28:19 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:28:19 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:28:19 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:28:30 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:28:30 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":37,"quantity":1}
+[01-Dec-2025 19:28:30 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:28:30 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:28:30 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:28:30 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:28:30 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":37,"quantity":1}
+[01-Dec-2025 19:28:30 Europe/Berlin] Cart.php - Add action: product_id=37, quantity=1
+[01-Dec-2025 19:28:30 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:28:30 Europe/Berlin] Cart.php - Product already in cart, updating quantity
+[01-Dec-2025 19:28:30 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:28:31 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:28:31 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:28:31 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:28:31 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:28:31 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:28:31 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:28:31 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:31:21 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:31:21 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:31:21 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:31:21 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:31:21 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:31:21 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:31:21 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:31:28 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:31:28 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:31:28 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:31:28 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:31:28 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:31:28 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:31:28 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:31:28 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 19:31:28 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:31:28 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:31:28 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:31:28 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:31:28 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:31:28 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:31:28 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:31:28 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:31:28 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:31:28 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:31:40 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:31:40 Europe/Berlin] Cart.php - Request body: {"action":"update","product_id":46,"quantity":2}
+[01-Dec-2025 19:31:40 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:31:40 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:31:40 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:31:40 Europe/Berlin] Cart.php - Action: update
+[01-Dec-2025 19:31:40 Europe/Berlin] Cart.php - Data: {"action":"update","product_id":46,"quantity":2}
+[01-Dec-2025 19:34:04 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:34:04 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 19:34:04 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:34:04 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:34:04 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:34:04 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:34:04 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 19:34:04 Europe/Berlin] Cart.php - Add action: product_id=45, quantity=1
+[01-Dec-2025 19:34:04 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:34:04 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:34:04 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:34:04 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:34:04 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:34:04 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:34:04 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:34:04 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:34:04 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:34:04 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:34:09 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:34:09 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 19:34:09 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:34:09 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:34:09 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:34:09 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:34:09 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 19:34:09 Europe/Berlin] Cart.php - Add action: product_id=44, quantity=1
+[01-Dec-2025 19:34:09 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:34:09 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:34:09 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:34:10 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:34:10 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:34:10 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:34:10 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:34:10 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:34:10 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:34:10 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:35:04 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:35:04 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:35:04 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:35:04 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:35:04 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:35:04 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:35:04 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:35:11 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:35:11 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:35:11 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:35:11 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:35:11 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:35:11 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:35:11 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":46,"quantity":1}
+[01-Dec-2025 19:35:11 Europe/Berlin] Cart.php - Add action: product_id=46, quantity=1
+[01-Dec-2025 19:35:11 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:35:11 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:35:11 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:35:11 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:35:11 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:35:11 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:35:11 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:35:11 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:35:11 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:35:11 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:35:14 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:35:14 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 19:35:14 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:35:14 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:35:14 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:35:14 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:35:14 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":45,"quantity":1}
+[01-Dec-2025 19:35:14 Europe/Berlin] Cart.php - Add action: product_id=45, quantity=1
+[01-Dec-2025 19:35:14 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:35:14 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:35:14 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:35:14 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:35:14 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:35:14 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:35:14 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:35:14 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:35:14 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:35:14 Europe/Berlin] Cart.php - Data: []
+[01-Dec-2025 19:35:16 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:35:16 Europe/Berlin] Cart.php - Request body: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 19:35:16 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:35:16 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:35:16 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:35:16 Europe/Berlin] Cart.php - Action: add
+[01-Dec-2025 19:35:16 Europe/Berlin] Cart.php - Data: {"action":"add","product_id":44,"quantity":1}
+[01-Dec-2025 19:35:16 Europe/Berlin] Cart.php - Add action: product_id=44, quantity=1
+[01-Dec-2025 19:35:16 Europe/Berlin] Cart.php - Checking if product already in cart for user 2
+[01-Dec-2025 19:35:16 Europe/Berlin] Cart.php - Adding new product to cart
+[01-Dec-2025 19:35:16 Europe/Berlin] Cart.php - Add action successful
+[01-Dec-2025 19:35:17 Europe/Berlin] Cart.php - Request received: POST
+[01-Dec-2025 19:35:17 Europe/Berlin] Cart.php - Request body: {}
+[01-Dec-2025 19:35:17 Europe/Berlin] JWT Auth - Token received: YES
+[01-Dec-2025 19:35:17 Europe/Berlin] JWT Auth - Token validated successfully for user_id: 2
+[01-Dec-2025 19:35:17 Europe/Berlin] Cart.php - Authenticated user_id: 2
+[01-Dec-2025 19:35:17 Europe/Berlin] Cart.php - Action: list
+[01-Dec-2025 19:35:17 Europe/Berlin] Cart.php - Data: []

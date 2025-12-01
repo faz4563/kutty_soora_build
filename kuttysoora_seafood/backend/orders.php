@@ -123,12 +123,50 @@ if ($action === 'place') {
 		$stmt->execute([$user_id]);
 		error_log("Orders.php - Cart cleared for user_id=$user_id");
 		
-		// Return order details
+		// Return order details with items
 		$stmt = $pdo->prepare("SELECT * FROM orders WHERE id = ?");
 		$stmt->execute([$order_id]);
 		$order = $stmt->fetch();
 		
-		error_log("Orders.php - Order placed successfully, returning order: " . json_encode($order));
+		// Fetch order items
+		$stmt2 = $pdo->prepare("SELECT oi.*, COALESCE(NULLIF(oi.product_name, ''), p.name) AS name, COALESCE(NULLIF(oi.product_image_url, ''), p.image_url) AS image_url, CASE WHEN oi.unit_price > 0 THEN oi.unit_price ELSE p.price END AS price FROM order_items oi LEFT JOIN products p ON oi.product_id = p.id WHERE oi.order_id = ?");
+		$stmt2->execute([$order_id]);
+		$items = $stmt2->fetchAll();
+		
+		// Normalize items to always be an indexed array and cast types
+		if (!is_array($items)) {
+			$items = [];
+		} else {
+			foreach ($items as &$it) {
+				if (isset($it['quantity'])) {
+					$it['quantity'] = (int)$it['quantity'];
+				}
+				if (isset($it['price'])) {
+					$it['price'] = (float)$it['price'];
+				}
+				$it['name'] = (isset($it['name']) && $it['name'] !== null && $it['name'] !== '') ? $it['name'] : ('Item #' . ($it['product_id'] ?? ''));
+				$img = isset($it['image_url']) ? trim($it['image_url']) : '';
+				if ($img === '') {
+					$it['image_url'] = '';
+				} else if (!preg_match('/^https?:\\/\\//', $img)) {
+					$img = preg_replace('/^(images\\/)+/', '', $img);
+					$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) ? 'https' : 'http';
+					$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
+					$it['image_url'] = $protocol . '://' . $host . '/kuttysoora_seafood/backend/images/' . $img;
+				} else {
+					if (strpos($img, 'http://kuttysoora.com') === 0) {
+						$img = preg_replace('/^http:\\/\\//', 'https://', $img);
+					}
+					$it['image_url'] = $img;
+				}
+			}
+			unset($it);
+			$items = array_values($items);
+		}
+		
+		$order['items'] = $items;
+		
+		error_log("Orders.php - Order placed successfully with " . count($items) . " items, returning order: " . json_encode($order));
 		echo json_encode(["success" => true, "order_id" => $order_id, "order" => $order]);
 		exit;
 	} catch (PDOException $e) {

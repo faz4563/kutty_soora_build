@@ -66,6 +66,11 @@ class JWTAuth {
         return $payloadData;
     }
     
+    // Alias for validateToken (for backward compatibility)
+    public static function verifyToken($token) {
+        return self::validateToken($token);
+    }
+    
     // Get token from headers
     public static function getTokenFromHeaders() {
         // Try getallheaders() first
