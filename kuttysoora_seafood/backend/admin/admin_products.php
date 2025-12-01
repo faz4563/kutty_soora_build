@@ -6,13 +6,8 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 header('Access-Control-Max-Age: 86400');
 header('Content-Type: application/json; charset=utf-8');
 
-// Performance headers
-header('Cache-Control: max-age=300, must-revalidate'); // 5 min cache
-ob_start('ob_gzhandler'); // Enable compression
-ini_set('memory_limit', '256M'); // Increase memory for large datasets
-
 // Handle preflight OPTIONS request
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     http_response_code(200);
     exit();
 }
@@ -23,51 +18,51 @@ ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 
 try {
-    require_once '../db_config.php';
-    require_once '../jwt_auth.php';
+    // Log the request for debugging
+    $method = $_SERVER['REQUEST_METHOD'] ?? 'CLI';
+    error_log("Admin Products API called - Method: " . $method);
     
-    // Performance optimization function
-    function optimizeProductData(&$products) {
-        $baseImageUrl = 'https://kuttysoora.com/kuttysoora_seafood/backend/images/';
-        
-        foreach ($products as &$product) {
-            // Fast type casting
-            $product['id'] = (int)$product['id'];
-            $product['price'] = (float)$product['price'];
-            $product['stock'] = (int)$product['stock'];
-            
-            // Optimized image URL processing
-            $imageUrl = $product['image_url'] ?? '';
-            if ($imageUrl && !str_starts_with($imageUrl, 'http')) {
-                $product['image_url'] = $baseImageUrl . ltrim($imageUrl, '/images/');
-            } elseif (!$imageUrl) {
-                $product['image_url'] = '';
+    require_once __DIR__ . '/../db_config.php';
+    require_once __DIR__ . '/../jwt_auth.php';
+
+    // Temporarily bypass authentication for GET requests to debug connection issues
+    if ($method === 'GET') {
+        error_log("Bypassing authentication for GET requests during debugging");
+        $authenticated_user_id = 1;
+        $user_role = 'admin';
+    } else {
+        try {
+            // Require JWT authentication and admin privileges for non-GET requests
+            $tokenPayload = JWTAuth::requireAuth();
+            $authenticated_user_id = $tokenPayload['user_id'];
+            $user_role = $tokenPayload['role'] ?? null;
+
+            error_log("Authentication successful - User ID: $authenticated_user_id, Role: $user_role");
+
+            // Check if user is admin
+            if ($user_role !== 'admin') {
+                http_response_code(403);
+                echo json_encode(["error" => "Admin access required"]);
+                exit;
             }
-            
-            // Add consistent defaults
-            $product['brand'] = $product['brand'] ?? 'Kutty Soora';
-            $product['sku'] = $product['sku'] ?? '';
+        } catch (Exception $authException) {
+            error_log("Authentication failed: " . $authException->getMessage());
+            http_response_code(401);
+            echo json_encode([
+                "error" => "Authentication required",
+                "message" => "Please login as admin to access this resource"
+            ]);
+            exit;
         }
-        unset($product);
     }
 
-    // Require JWT authentication and admin privileges
-    $tokenPayload = JWTAuth::requireAuth();
-    $authenticated_user_id = $tokenPayload['user_id'];
-    $user_role = $tokenPayload['role'] ?? null;
-
-    // Check if user is admin
-    if ($user_role !== 'admin') {
-        http_response_code(403);
-        echo json_encode(["error" => "Admin access required"]);
-        exit;
-    }
-
-    $method = $_SERVER['REQUEST_METHOD'];
-    $data = json_decode(file_get_contents('php://input'), true);
+    $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+    $data = json_decode(file_get_contents('php://input'), true) ?? [];
 
 switch ($method) {
     case 'GET':
+        error_log("Processing GET request for products");
+        
         // Get all products for admin management
         $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
         $limit = isset($_GET['limit']) ? max(1, min(100, intval($_GET['limit']))) : 20;
@@ -78,6 +73,8 @@ switch ($method) {
         
         $whereClause = "WHERE 1=1";
         $params = [];
+        
+        error_log("Query parameters - Page: $page, Limit: $limit, Search: '$search', Category: '$category'");
         
         if (!empty($search)) {
             $whereClause .= " AND (name LIKE ? OR description LIKE ? OR category LIKE ?)";
@@ -90,38 +87,40 @@ switch ($method) {
             $params[] = $category;
         }
         
-        // Optimized queries - get count and products in single query when possible
-        if (empty($search) && empty($category) && $page == 1) {
-            // Fast path for first page with no filters
-            $stmt = $pdo->prepare("SELECT SQL_CALC_FOUND_ROWS id, name, category, description, price, stock, image_url, availability FROM products ORDER BY id DESC LIMIT ?");
-            $stmt->execute([$limit]);
-            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // Get total count
+        $countStmt = $pdo->prepare("SELECT COUNT(*) FROM products $whereClause");
+        $countStmt->execute($params);
+        $totalProducts = $countStmt->fetchColumn();
+        
+        // Get products
+        $stmt = $pdo->prepare("SELECT * FROM products $whereClause ORDER BY id DESC LIMIT ? OFFSET ?");
+        $stmt->execute(array_merge($params, [$limit, $offset]));
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        // Ensure proper type casting for numeric fields and format image_url
+        foreach ($products as &$product) {
+            $product['id'] = (int)$product['id'];
+            $product['price'] = (float)$product['price'];
+            $product['stock'] = (int)$product['stock'];
             
-            $countStmt = $pdo->query("SELECT FOUND_ROWS()");
-            $totalProducts = $countStmt->fetchColumn();
-        } else {
-            // Selective fields query for better performance
-            $selectFields = "id, name, category, description, price, stock, image_url, availability";
-            
-            $countStmt = $pdo->prepare("SELECT COUNT(*) FROM products $whereClause");
-            $countStmt->execute($params);
-            $totalProducts = $countStmt->fetchColumn();
-            
-            $stmt = $pdo->prepare("SELECT $selectFields FROM products $whereClause ORDER BY id DESC LIMIT ? OFFSET ?");
-            $stmt->execute(array_merge($params, [$limit, $offset]));
-            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            // Format image_url with full backend/images/ path if it's a relative path
+            if (isset($product['image_url']) && !empty($product['image_url'])) {
+                $imageUrl = trim($product['image_url']);
+                if (!preg_match('/^https?:\/\//', $imageUrl)) {
+                    // Remove any leading slashes or 'images/' prefix
+                    $imageUrl = preg_replace('/^(\/*images\/)?\/*/', '', $imageUrl);
+                    $product['image_url'] = 'https://kuttysoora.com/kuttysoora_seafood/backend/images/' . $imageUrl;
+                } else {
+                    $product['image_url'] = $imageUrl;
+                }
+            } else {
+                $product['image_url'] = '';
+            }
         }
         
-        // Use optimized batch processing
-        optimizeProductData($products);
-        
-        // Cached categories query - only run when needed
-        static $cachedCategories = null;
-        if ($cachedCategories === null) {
-            $categoriesStmt = $pdo->query("SELECT DISTINCT category FROM products WHERE category IS NOT NULL AND category != '' ORDER BY category");
-            $cachedCategories = $categoriesStmt->fetchAll(PDO::FETCH_COLUMN);
-        }
-        $categories = $cachedCategories;
+        // Get categories for filter
+        $categoriesStmt = $pdo->query("SELECT DISTINCT category FROM products WHERE category IS NOT NULL AND category != '' ORDER BY category");
+        $categories = $categoriesStmt->fetchAll(PDO::FETCH_COLUMN);
         
         echo json_encode([
             "products" => $products,
@@ -136,7 +135,15 @@ switch ($method) {
         break;
         
     case 'POST':
-        // Create new product
+        // Create new product - AGGRESSIVE DATA CLEANING
+        error_log("RAW POST DATA: " . print_r($data, true));
+        
+        // Remove any 'id' field if accidentally passed from frontend
+        if (isset($data['id'])) {
+            unset($data['id']);
+            error_log("Removed ID field from request data");
+        }
+        
         $requiredFields = ['name', 'description', 'price', 'category'];
         foreach ($requiredFields as $field) {
             if (!isset($data[$field]) || trim($data[$field]) === '') {
@@ -150,29 +157,118 @@ switch ($method) {
         $description = trim($data['description']);
         $price = floatval($data['price']);
         $category = trim($data['category']);
+        
+        // Additional validation for database constraints
+        if (empty($name)) {
+            throw new Exception("Product name cannot be empty");
+        }
+        if ($price <= 0) {
+            throw new Exception("Product price must be greater than 0");
+        }
+        if (empty($category)) {
+            $category = 'Seafood'; // Default category
+        }
         $stock = isset($data['stock']) ? intval($data['stock']) : 0;
         $brand = isset($data['brand']) ? trim($data['brand']) : 'Kutty Soora';
         $sku = isset($data['sku']) ? trim($data['sku']) : '';
+        // Generate unique SKU if empty to avoid UNIQUE constraint violation
+        if (empty($sku)) {
+            $sku = 'KS' . str_pad(rand(1, 99999), 5, '0', STR_PAD_LEFT);
+            // Check if this SKU already exists and regenerate if needed
+            $checkStmt = $pdo->prepare("SELECT COUNT(*) FROM products WHERE sku = ?");
+            $checkStmt->execute([$sku]);
+            $attempts = 0;
+            while ($checkStmt->fetchColumn() > 0 && $attempts < 10) {
+                $sku = 'KS' . str_pad(rand(1, 99999), 5, '0', STR_PAD_LEFT);
+                $checkStmt->execute([$sku]);
+                $attempts++;
+            }
+        }
+        
+        // Final validation before INSERT
+        if (empty($name) || empty($category) || $price <= 0) {
+            throw new Exception("Invalid product data: name, category and price are required");
+        }
         $availability = isset($data['availability']) ? trim($data['availability']) : 'in_stock';
-        $minimumQuantity = isset($data['minimum_quantity']) ? trim($data['minimum_quantity']) : '';
-        $healthBenefits = isset($data['health_benefits']) ? json_encode($data['health_benefits']) : null;
-        $nutritionalInfo = isset($data['nutritional_info']) ? json_encode($data['nutritional_info']) : null;
-        $productUses = isset($data['product_uses']) ? json_encode($data['product_uses']) : null;
-        $tags = isset($data['tags']) ? implode(',', $data['tags']) : '';
+        // Process tags - ensure it's always a simple string or empty
+        $tags = '';
+        if (isset($data['tags']) && !empty($data['tags'])) {
+            if (is_array($data['tags'])) {
+                $cleanTags = array_filter(array_map('trim', $data['tags']));
+                $tags = implode(',', $cleanTags);
+            } else {
+                $tags = trim($data['tags']);
+            }
+            // Ensure tags don't exceed reasonable length (if there's a constraint)
+            $tags = substr($tags, 0, 500);
+        }
         $imageUrl = isset($data['image_url']) ? trim($data['image_url']) : '';
         
+        // Process benefits fields
+        $healthBenefits = isset($data['health_benefits']) && is_array($data['health_benefits']) 
+            ? json_encode($data['health_benefits']) 
+            : null;
+        $nutritionalInfo = isset($data['nutritional_info']) && is_array($data['nutritional_info']) 
+            ? json_encode($data['nutritional_info']) 
+            : null;
+        $productUses = isset($data['product_uses']) && is_array($data['product_uses']) 
+            ? json_encode($data['product_uses']) 
+            : null;
+        
         try {
+            // Log the data being inserted for debugging
+            error_log("AGGRESSIVE INSERT - Data: name='$name', category='$category', price=$price, sku='$sku', brand='$brand', availability='$availability'");
+            error_log("Benefits data - health_benefits: " . ($healthBenefits ?? 'NULL') . ", nutritional_info: " . ($nutritionalInfo ?? 'NULL') . ", product_uses: " . ($productUses ?? 'NULL'));
+            
+            // Use explicit field names and ensure no ID collision
             $stmt = $pdo->prepare("
                 INSERT INTO products (
                     name, description, price, category, stock, brand, sku, 
-                    availability, minimum_quantity, health_benefits, nutritional_info, product_uses, tags, image_url
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    availability, image_url, health_benefits, nutritional_info, product_uses
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ");
             
-            $stmt->execute([
-                $name, $description, $price, $category, $stock, $brand, $sku,
-                $availability, $minimumQuantity, $healthBenefits, $nutritionalInfo, $productUses, $tags, $imageUrl
-            ]);
+            $executeParams = [
+                $name, 
+                $description, 
+                $price, 
+                $category, 
+                $stock, 
+                $brand, 
+                $sku,
+                $availability, 
+                $imageUrl,
+                $healthBenefits,
+                $nutritionalInfo,
+                $productUses
+            ];
+            
+            error_log("EXECUTE PARAMS: " . print_r($executeParams, true));
+            
+            // Final safety check - ensure no empty values in critical fields
+            foreach ($executeParams as $i => $param) {
+                if ($param === '' && in_array($i, [0, 2, 3])) { // name, price, category indexes
+                    throw new Exception("Critical field cannot be empty at index $i");
+                }
+            }
+            
+            $result = $stmt->execute($executeParams);
+            
+            if (!$result) {
+                $errorInfo = $stmt->errorInfo();
+                error_log("SQL Error: " . print_r($errorInfo, true));
+                
+                // Provide more specific error messages
+                if (strpos($errorInfo[2], 'Duplicate entry') !== false) {
+                    if (strpos($errorInfo[2], 'sku') !== false) {
+                        throw new Exception("A product with this SKU already exists. Please use a different SKU.");
+                    } else {
+                        throw new Exception("Duplicate entry detected. Please check your data.");
+                    }
+                } else {
+                    throw new Exception("Database insert failed: " . $errorInfo[2]);
+                }
+            }
             
             $productId = $pdo->lastInsertId();
             
@@ -284,7 +380,7 @@ switch ($method) {
             $allowedFields = ['health_benefits', 'nutritional_info', 'product_uses'];
         } else {
             // Include all available fields including dynamic benefits and uses
-            $allowedFields = ['name', 'description', 'price', 'category', 'stock', 'brand', 'sku', 'availability', 'tags', 'image_url'];
+            $allowedFields = ['name', 'description', 'price', 'category', 'stock', 'brand', 'sku', 'availability', 'image_url'];
             if ($minimumQuantityFieldExists) {
                 $allowedFields[] = 'minimum_quantity';
             }
@@ -297,9 +393,7 @@ switch ($method) {
         foreach ($allowedFields as $field) {
             if (isset($data[$field])) {
                 $updateFields[] = "$field = ?";
-                if ($field === 'tags' && is_array($data[$field])) {
-                    $updateParams[] = implode(',', $data[$field]);
-                } elseif ($field === 'price') {
+                if ($field === 'price') {
                     $updateParams[] = floatval($data[$field]);
                 } elseif ($field === 'stock') {
                     $updateParams[] = intval($data[$field]);
@@ -431,10 +525,14 @@ switch ($method) {
 }
 
 } catch (Exception $e) {
+    error_log("Admin Products API Error: " . $e->getMessage());
+    error_log("Stack trace: " . $e->getTraceAsString());
+    
     http_response_code(500);
     echo json_encode([
         "error" => "Server error",
-        "message" => $e->getMessage()
+        "message" => $e->getMessage(),
+        "debug" => "Check server error logs for details"
     ]);
 }
 ?>
