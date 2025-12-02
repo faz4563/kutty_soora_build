@@ -2,11 +2,23 @@
 // Include comprehensive CORS configuration
 require_once __DIR__ . '/cors_headers.php';
 
-require_once 'db_config.php';
-require_once 'jwt_auth.php';
+try {
+    require_once 'db_config.php';
+    require_once 'jwt_auth.php';
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Server configuration error', 'details' => $e->getMessage()]);
+    exit();
+}
 
 // Validate JWT token and get user info
-$tokenPayload = JWTAuth::requireAuth();
+try {
+    $tokenPayload = JWTAuth::requireAuth();
+} catch (Exception $e) {
+    http_response_code(401);
+    echo json_encode(['error' => 'Authentication failed', 'details' => $e->getMessage()]);
+    exit();
+}
 $authenticated_user_id = $tokenPayload['user_id'];
 
 $rawInput = file_get_contents('php://input');

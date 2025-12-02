@@ -17,8 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
-require_once 'db_config.php';
-require_once 'jwt_auth.php';
+try {
+    require_once 'db_config.php';
+    require_once 'jwt_auth.php';
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Server configuration error', 'details' => $e->getMessage()]);
+    exit();
+}
 
 // Require JWT authentication for products API
 $tokenPayload = JWTAuth::requireAuth();

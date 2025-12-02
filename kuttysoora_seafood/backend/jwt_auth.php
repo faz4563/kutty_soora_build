@@ -1,7 +1,15 @@
 <?php
 // JWT Authentication Helper Class
 class JWTAuth {
-    private static $secret_key = "kuttysoora_seafood_secret_2024_secure_key_here";
+    private static function getSecretKey() {
+        // Try to get from environment first
+        $secret = $_ENV['JWT_SECRET'] ?? getenv('JWT_SECRET');
+        if (empty($secret)) {
+            $secret = "kuttysoora_seafood_secret_2024_secure_key_here";
+        }
+        return trim($secret);
+    }
+    
     private static $algorithm = "HS256";
     
     // Generate JWT token
@@ -27,7 +35,8 @@ class JWTAuth {
         $base64Header = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($header));
         $base64Payload = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($payload));
         
-        $signature = hash_hmac('sha256', $base64Header . "." . $base64Payload, self::$secret_key, true);
+        $secretKey = self::getSecretKey();
+        $signature = hash_hmac('sha256', $base64Header . "." . $base64Payload, $secretKey, true);
         $base64Signature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
         
         return $base64Header . "." . $base64Payload . "." . $base64Signature;
@@ -47,7 +56,8 @@ class JWTAuth {
         list($header, $payload, $signature) = $parts;
         
         // Verify signature
-        $validSignature = hash_hmac('sha256', $header . "." . $payload, self::$secret_key, true);
+        $secretKey = self::getSecretKey();
+        $validSignature = hash_hmac('sha256', $header . "." . $payload, $secretKey, true);
         $validSignature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($validSignature));
         
         if ($signature !== $validSignature) {
