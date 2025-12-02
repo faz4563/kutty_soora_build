@@ -80,8 +80,8 @@ $user = [
 	'created_at' => date('Y-m-d H:i:s')
 ];
 
-// Generate JWT token
-$token = JWTAuth::generateToken($user['id'], $user['mobile']);
+// Generate JWT token with role
+$token = JWTAuth::generateToken($user['id'], $user['mobile'], $role);
 
 echo json_encode([
 	"user" => $user,

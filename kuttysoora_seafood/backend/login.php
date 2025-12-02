@@ -155,23 +155,14 @@ try {
         $user['id'] = (int)$user['id'];
     }
     
-    // Generate JWT token
-    $jwtSecret = $_ENV['JWT_SECRET'] ?? 'fallback_secret_key_change_this';
-    $payload = [
-        'user_id' => $user['id'],
-        'mobile' => $user['mobile'],
-        'role' => $user['role'] ?? 'user',
-        'iat' => time(),
-        'exp' => time() + (24 * 60 * 60) // 24 hours
-    ];
+    // Use JWTAuth class for consistent token generation
+    require_once __DIR__ . '/jwt_auth.php';
     
-    // Simple JWT generation
-    $header = json_encode(['typ' => 'JWT', 'alg' => 'HS256']);
-    $payload_encoded = base64_encode(json_encode($payload));
-    $header_encoded = base64_encode($header);
-    $signature = hash_hmac('sha256', "$header_encoded.$payload_encoded", $jwtSecret, true);
-    $signature_encoded = base64_encode($signature);
-    $token = "$header_encoded.$payload_encoded.$signature_encoded";
+    $token = JWTAuth::generateToken(
+        $user['id'],
+        $user['mobile'],
+        $user['role'] ?? 'user'
+    );
     
     // Return success
     http_response_code(200);

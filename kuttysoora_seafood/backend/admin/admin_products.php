@@ -17,6 +17,27 @@ error_reporting(E_ALL);
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 
+// Load environment variables manually (no composer dependency)
+function loadEnv($file) {
+    if (!file_exists($file)) {
+        return false;
+    }
+    $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) continue;
+        if (strpos($line, '=') === false) continue;
+        list($key, $value) = explode('=', $line, 2);
+        $key = trim($key);
+        $value = trim($value, " \t\n\r\0\x0B\"'");
+        $_ENV[$key] = $value;
+        putenv("$key=$value");
+    }
+    return true;
+}
+
+// Load .env file for JWT_SECRET and other configs
+loadEnv(__DIR__ . '/../.env');
+
 try {
     // Log the request for debugging
     $method = $_SERVER['REQUEST_METHOD'] ?? 'CLI';

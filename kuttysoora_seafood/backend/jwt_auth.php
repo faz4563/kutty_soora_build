@@ -5,30 +5,28 @@ class JWTAuth {
         // Try to get from environment first
         $secret = $_ENV['JWT_SECRET'] ?? getenv('JWT_SECRET');
         if (empty($secret)) {
+            error_log("JWT Auth: JWT_SECRET not found in environment, using default");
             $secret = "kuttysoora_seafood_secret_2024_secure_key_here";
+        } else {
+            error_log("JWT Auth: Using JWT_SECRET from environment");
         }
+        error_log("JWT Auth: Secret key length: " . strlen(trim($secret)));
         return trim($secret);
     }
     
     private static $algorithm = "HS256";
     
     // Generate JWT token
-    public static function generateToken($user_id, $phone) {
+    public static function generateToken($user_id, $phone, $role = 'user') {
         $header = json_encode(['typ' => 'JWT', 'alg' => 'HS256']);
-        // Include role when available by passing as optional 3rd parameter
-        $args = func_get_args();
-        $role = isset($args[2]) ? $args[2] : null;
 
         $payloadArray = [
             'user_id' => $user_id,
             'phone' => $phone,
+            'role' => $role,
             'iat' => time(),
             'exp' => time() + (24 * 60 * 60) // 24 hours
         ];
-
-        if ($role !== null) {
-            $payloadArray['role'] = $role;
-        }
 
         $payload = json_encode($payloadArray);
         
@@ -50,6 +48,7 @@ class JWTAuth {
         
         $parts = explode('.', $token);
         if (count($parts) !== 3) {
+            error_log("JWT Auth: Invalid token format. Parts count: " . count($parts));
             return false;
         }
         
@@ -61,6 +60,9 @@ class JWTAuth {
         $validSignature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($validSignature));
         
         if ($signature !== $validSignature) {
+            error_log("JWT Auth: Signature mismatch");
+            error_log("JWT Auth: Expected signature: " . substr($validSignature, 0, 20) . "...");
+            error_log("JWT Auth: Received signature: " . substr($signature, 0, 20) . "...");
             return false;
         }
         
@@ -68,8 +70,14 @@ class JWTAuth {
         $payload = base64_decode(str_replace(['-', '_'], ['+', '/'], $payload));
         $payloadData = json_decode($payload, true);
         
+        if ($payloadData === null) {
+            error_log("JWT Auth: Failed to decode payload");
+            return false;
+        }
+        
         // Check expiration
         if ($payloadData['exp'] < time()) {
+            error_log("JWT Auth: Token expired. Exp: " . $payloadData['exp'] . ", Now: " . time());
             return false;
         }
         
@@ -81,77 +89,48 @@ class JWTAuth {
         return self::validateToken($token);
     }
     
-    // Get token from headers - AGGRESSIVE version
+    // Get token from headers
     public static function getTokenFromHeaders() {
-        $token = null;
+        error_log("JWT Auth: Getting token from headers...");
         
         // Method 1: getallheaders()
         if (function_exists('getallheaders')) {
             $headers = getallheaders();
-            
-            // Try different case variations
+            error_log("JWT Auth: Available headers via getallheaders: " . json_encode(array_keys($headers)));
             foreach (['Authorization', 'authorization', 'AUTHORIZATION'] as $key) {
-                if (isset($headers[$key])) {
-                    $authHeader = $headers[$key];
-                    if (strpos($authHeader, 'Bearer ') === 0) {
-                        $token = substr($authHeader, 7);
-                        error_log("JWT: Token found via getallheaders() - $key");
-                        return $token;
-                    }
+                if (isset($headers[$key]) && strpos($headers[$key], 'Bearer ') === 0) {
+                    error_log("JWT Auth: Token found via getallheaders using key: $key");
+                    return substr($headers[$key], 7);
                 }
             }
         }
         
         // Method 2: $_SERVER HTTP_AUTHORIZATION
-        if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
-            $authHeader = $_SERVER['HTTP_AUTHORIZATION'];
-            if (strpos($authHeader, 'Bearer ') === 0) {
-                $token = substr($authHeader, 7);
-                error_log("JWT: Token found via HTTP_AUTHORIZATION");
-                return $token;
-            }
+        if (isset($_SERVER['HTTP_AUTHORIZATION']) && strpos($_SERVER['HTTP_AUTHORIZATION'], 'Bearer ') === 0) {
+            error_log("JWT Auth: Token found via HTTP_AUTHORIZATION");
+            return substr($_SERVER['HTTP_AUTHORIZATION'], 7);
         }
         
         // Method 3: REDIRECT_HTTP_AUTHORIZATION
-        if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
-            $authHeader = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
-            if (strpos($authHeader, 'Bearer ') === 0) {
-                $token = substr($authHeader, 7);
-                error_log("JWT: Token found via REDIRECT_HTTP_AUTHORIZATION");
-                return $token;
-            }
+        if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION']) && strpos($_SERVER['REDIRECT_HTTP_AUTHORIZATION'], 'Bearer ') === 0) {
+            error_log("JWT Auth: Token found via REDIRECT_HTTP_AUTHORIZATION");
+            return substr($_SERVER['REDIRECT_HTTP_AUTHORIZATION'], 7);
         }
         
         // Method 4: apache_request_headers()
         if (function_exists('apache_request_headers')) {
             $headers = apache_request_headers();
+            error_log("JWT Auth: Available headers via apache_request_headers: " . json_encode(array_keys($headers)));
             foreach (['Authorization', 'authorization', 'AUTHORIZATION'] as $key) {
-                if (isset($headers[$key])) {
-                    $authHeader = $headers[$key];
-                    if (strpos($authHeader, 'Bearer ') === 0) {
-                        $token = substr($authHeader, 7);
-                        error_log("JWT: Token found via apache_request_headers() - $key");
-                        return $token;
-                    }
+                if (isset($headers[$key]) && strpos($headers[$key], 'Bearer ') === 0) {
+                    error_log("JWT Auth: Token found via apache_request_headers using key: $key");
+                    return substr($headers[$key], 7);
                 }
             }
         }
         
-        // Method 5: Check all $_SERVER keys
-        foreach ($_SERVER as $key => $value) {
-            if (stripos($key, 'AUTHORIZATION') !== false || stripos($key, 'AUTH') !== false) {
-                error_log("JWT: Found auth-related header: $key = $value");
-                if (strpos($value, 'Bearer ') === 0) {
-                    $token = substr($value, 7);
-                    error_log("JWT: Token extracted from $key");
-                    return $token;
-                }
-            }
-        }
-        
-        error_log("JWT: No token found in any header");
-        error_log("JWT: Available headers: " . json_encode(function_exists('getallheaders') ? getallheaders() : []));
-        
+        error_log("JWT Auth: Token not found in any header location");
+        error_log("JWT Auth: \$_SERVER keys: " . json_encode(array_keys($_SERVER)));
         return null;
     }
     
@@ -159,26 +138,33 @@ class JWTAuth {
     public static function requireAuth() {
         $token = self::getTokenFromHeaders();
         
-        // Enhanced logging for debugging
-        error_log("JWT Auth - Token received: " . ($token ? "YES" : "NO"));
         if (!$token) {
-            error_log("JWT Auth - No token found in headers");
+            error_log("JWT Auth: No token found in headers");
+            http_response_code(401);
+            echo json_encode([
+                "error" => "Authentication required",
+                "code" => "NO_TOKEN",
+                "message" => "Please log in"
+            ]);
+            exit;
         }
         
+        error_log("JWT Auth: Token found, validating... Token length: " . strlen($token));
         $payload = self::validateToken($token);
         
         if (!$payload) {
-            error_log("JWT Auth - Token validation failed");
+            error_log("JWT Auth: Token validation failed");
+            error_log("JWT Auth: Token: " . substr($token, 0, 50) . "...");
             http_response_code(401);
             echo json_encode([
                 "error" => "Invalid or expired token",
-                "code" => "UNAUTHORIZED",
+                "code" => "INVALID_TOKEN",
                 "message" => "Please log in again"
             ]);
             exit;
         }
         
-        error_log("JWT Auth - Token validated successfully for user_id: " . $payload['user_id']);
+        error_log("JWT Auth: Authentication successful for user: " . $payload['user_id']);
         return $payload;
     }
 
