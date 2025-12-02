@@ -32417,14 +32417,14 @@ case 1:return A.x(q,r)}})
 return A.y($async$aO_,r)},
 aNU(){var s=0,r=A.z(t.P),q
 var $async$aNU=A.v(function(a,b){if(a===1)return A.w(b,r)
-while(true)switch(s){case 0:q=A.ea("products.php",A.R(["action","list"],t.N,t.z),"GET_PRODUCTS",!0)
+while(true)switch(s){case 0:q=A.ea("products.php",A.R(["action","list"],t.N,t.z),"GET_PRODUCTS",!1)
 s=1
 break
 case 1:return A.x(q,r)}})
 return A.y($async$aNU,r)},
 aNV(a){var s=0,r=A.z(t.P),q
 var $async$aNV=A.v(function(b,c){if(b===1)return A.w(c,r)
-while(true)switch(s){case 0:q=A.ea("products.php",A.R(["action","get_by_category","category",a],t.N,t.z),"GET_PRODUCTS_BY_CATEGORY",!0)
+while(true)switch(s){case 0:q=A.ea("products.php",A.R(["action","get_by_category","category",a],t.N,t.z),"GET_PRODUCTS_BY_CATEGORY",!1)
 s=1
 break
 case 1:return A.x(q,r)}})
@@ -114670,7 +114670,7 @@ $.aXB=1
 $.aPm=-9007199254740992
 $.NE=null
 $.ND=null
-$.aSw="localhost/kuttysoora_seafood"
+$.aSw="kuttysoora.com/kuttysoora_seafood"
 $.b5D=function(){var s=t.n
 return A.b([A.b([0.001200833568784504,0.002389694492170889,0.0002795742885861124],s),A.b([0.0005891086651375999,0.0029785502573438758,0.0003270666104008398],s),A.b([0.00010146692491640572,0.0005364214359186694,0.0032979401770712076],s)],t.zg)}()
 $.b5B=function(){var s=t.n

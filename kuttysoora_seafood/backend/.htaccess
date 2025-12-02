@@ -13,9 +13,15 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     
-    # Pass Authorization header to PHP
-    RewriteCond %{HTTP:Authorization} ^(.*)
-    RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+    # AGGRESSIVE Authorization header passing - try multiple methods
+    RewriteCond %{HTTP:Authorization} ^(.+)$
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%1]
+    
+    RewriteCond %{HTTP:Authorization} ^(.+)$
+    RewriteRule .* - [E=REDIRECT_HTTP_AUTHORIZATION:%1]
+    
+    # Set environment variable for CGI
+    SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
     
     # Don't interfere with OPTIONS - let PHP handle it
     # RewriteCond %{REQUEST_METHOD} ^OPTIONS
@@ -25,6 +31,11 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# Enable CGI/FastCGI Authorization header
+<IfModule mod_setenvif.c>
+    SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
 </IfModule>
 
 # CORS headers are handled individually in PHP files

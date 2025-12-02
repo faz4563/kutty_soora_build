@@ -26,9 +26,15 @@ try {
     exit();
 }
 
-// Require JWT authentication for products API
-$tokenPayload = JWTAuth::requireAuth();
-$authenticated_user_id = $tokenPayload['user_id'];
+// Optional authentication for products API (public browsing allowed)
+$authenticated_user_id = null;
+$token = JWTAuth::getTokenFromHeaders();
+if ($token) {
+    $tokenPayload = JWTAuth::validateToken($token);
+    if ($tokenPayload) {
+        $authenticated_user_id = $tokenPayload['user_id'];
+    }
+}
 
 $data = json_decode(file_get_contents('php://input'), true);
 $action = isset($data['action']) ? $data['action'] : 'list';

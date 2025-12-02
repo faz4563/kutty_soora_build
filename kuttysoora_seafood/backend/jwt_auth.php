@@ -64,7 +64,7 @@ class JWTAuth {
             return false;
         }
         
-    // Decode payload
+        // Decode payload
         $payload = base64_decode(str_replace(['-', '_'], ['+', '/'], $payload));
         $payloadData = json_decode($payload, true);
         
@@ -81,34 +81,76 @@ class JWTAuth {
         return self::validateToken($token);
     }
     
-    // Get token from headers
+    // Get token from headers - AGGRESSIVE version
     public static function getTokenFromHeaders() {
-        // Try getallheaders() first
+        $token = null;
+        
+        // Method 1: getallheaders()
         if (function_exists('getallheaders')) {
             $headers = getallheaders();
-            if (isset($headers['Authorization'])) {
-                $authHeader = $headers['Authorization'];
-                if (strpos($authHeader, 'Bearer ') === 0) {
-                    return substr($authHeader, 7);
+            
+            // Try different case variations
+            foreach (['Authorization', 'authorization', 'AUTHORIZATION'] as $key) {
+                if (isset($headers[$key])) {
+                    $authHeader = $headers[$key];
+                    if (strpos($authHeader, 'Bearer ') === 0) {
+                        $token = substr($authHeader, 7);
+                        error_log("JWT: Token found via getallheaders() - $key");
+                        return $token;
+                    }
                 }
             }
         }
         
-        // Fallback to $_SERVER
+        // Method 2: $_SERVER HTTP_AUTHORIZATION
         if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
             $authHeader = $_SERVER['HTTP_AUTHORIZATION'];
             if (strpos($authHeader, 'Bearer ') === 0) {
-                return substr($authHeader, 7);
+                $token = substr($authHeader, 7);
+                error_log("JWT: Token found via HTTP_AUTHORIZATION");
+                return $token;
             }
         }
         
-        // Another fallback
+        // Method 3: REDIRECT_HTTP_AUTHORIZATION
         if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
             $authHeader = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
             if (strpos($authHeader, 'Bearer ') === 0) {
-                return substr($authHeader, 7);
+                $token = substr($authHeader, 7);
+                error_log("JWT: Token found via REDIRECT_HTTP_AUTHORIZATION");
+                return $token;
             }
         }
+        
+        // Method 4: apache_request_headers()
+        if (function_exists('apache_request_headers')) {
+            $headers = apache_request_headers();
+            foreach (['Authorization', 'authorization', 'AUTHORIZATION'] as $key) {
+                if (isset($headers[$key])) {
+                    $authHeader = $headers[$key];
+                    if (strpos($authHeader, 'Bearer ') === 0) {
+                        $token = substr($authHeader, 7);
+                        error_log("JWT: Token found via apache_request_headers() - $key");
+                        return $token;
+                    }
+                }
+            }
+        }
+        
+        // Method 5: Check all $_SERVER keys
+        foreach ($_SERVER as $key => $value) {
+            if (stripos($key, 'AUTHORIZATION') !== false || stripos($key, 'AUTH') !== false) {
+                error_log("JWT: Found auth-related header: $key = $value");
+                if (strpos($value, 'Bearer ') === 0) {
+                    $token = substr($value, 7);
+                    error_log("JWT: Token extracted from $key");
+                    return $token;
+                }
+            }
+        }
+        
+        error_log("JWT: No token found in any header");
+        error_log("JWT: Available headers: " . json_encode(function_exists('getallheaders') ? getallheaders() : []));
         
         return null;
     }
