@@ -210,6 +210,8 @@ if ($action === 'place') {
 	}
 } elseif ($action === 'cancel') {
 	$order_id = isset($data['order_id']) ? intval($data['order_id']) : 0;
+	$cancellation_reason = isset($data['reason']) ? trim($data['reason']) : 'Cancelled by customer';
+	
 	if (!$order_id) {
 		http_response_code(400);
 		echo json_encode(["error" => "order_id required"]);
@@ -217,7 +219,7 @@ if ($action === 'place') {
 	}
 	
 	// Check if order belongs to user and can be cancelled
-	$stmt = $pdo->prepare("SELECT * FROM orders WHERE id = ? AND user_id = ? AND status != 'cancelled'");
+	$stmt = $pdo->prepare("SELECT * FROM orders WHERE id = ? AND user_id = ? AND status NOT IN ('cancelled', 'delivered')");
 	$stmt->execute([$order_id, $user_id]);
 	$order = $stmt->fetch();
 	
@@ -228,10 +230,77 @@ if ($action === 'place') {
 	}
 	
 	// Update order status to cancelled
-	$stmt = $pdo->prepare("UPDATE orders SET status = 'cancelled' WHERE id = ?");
-	$stmt->execute([$order_id]);
+	$stmt = $pdo->prepare("UPDATE orders SET status = 'cancelled', cancelled_reason = ?, cancelled_by = 'customer', cancelled_at = NOW() WHERE id = ?");
+	$stmt->execute([$cancellation_reason, $order_id]);
 	
-	echo json_encode(["success" => true]);
+	$refund_requested = false;
+	$refund_status = null;
+	$refund_message = '';
+	
+	// Auto-process Razorpay refund if payment was made via Razorpay
+	if (!empty($order['razorpay_payment_id']) && $order['payment_method'] !== 'cash_on_delivery') {
+		try {
+			// Load Razorpay SDK
+			require_once __DIR__ . '/vendor/autoload.php';
+			
+			// Load Razorpay credentials
+			$razorpay_key_id = $_ENV['RAZORPAY_KEY_ID'] ?? '';
+			$razorpay_key_secret = $_ENV['RAZORPAY_KEY_SECRET'] ?? '';
+			
+			if (!empty($razorpay_key_id) && !empty($razorpay_key_secret)) {
+				$api = new Razorpay\Api\Api($razorpay_key_id, $razorpay_key_secret);
+				
+				// Fetch payment and create refund
+				$payment = $api->payment->fetch($order['razorpay_payment_id']);
+				$refund_amount_paise = (int)($order['total_amount'] * 100);
+				
+				$refund = $payment->refund([
+					'amount' => $refund_amount_paise,
+					'speed' => 'normal',
+					'notes' => [
+						'order_number' => $order['order_number'],
+						'reason' => $cancellation_reason
+					]
+				]);
+				
+				// Update order with refund information
+				$updateStmt = $pdo->prepare("
+					UPDATE orders 
+					SET payment_status = 'refunded',
+						admin_notes = CONCAT(COALESCE(admin_notes, ''), '\n[', NOW(), '] Razorpay refund initiated: ', ?)
+					WHERE id = ?
+				");
+				$updateStmt->execute([$refund->id, $order_id]);
+				
+				$refund_requested = true;
+				$refund_status = 'processed';
+				$refund_message = 'Refund has been processed via Razorpay. Refund ID: ' . $refund->id;
+				
+				error_log("Razorpay refund successful for order $order_id: " . $refund->id);
+			} else {
+				error_log("Razorpay credentials not found for order $order_id");
+				$refund_message = 'Please contact support for refund processing.';
+			}
+		} catch (Exception $e) {
+			error_log("Razorpay refund error for order $order_id: " . $e->getMessage());
+			$refund_requested = true;
+			$refund_status = 'failed';
+			$refund_message = 'Refund request failed. Please contact support. Error: ' . $e->getMessage();
+		}
+		
+		echo json_encode([
+			"success" => true, 
+			"message" => "Order cancelled successfully. " . $refund_message,
+			"refund_requested" => $refund_requested,
+			"refund_status" => $refund_status
+		]);
+	} else {
+		echo json_encode([
+			"success" => true,
+			"message" => "Order cancelled successfully.",
+			"refund_requested" => false
+		]);
+	}
 	exit;
 }
 
