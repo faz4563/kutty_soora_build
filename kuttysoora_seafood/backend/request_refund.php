@@ -152,7 +152,6 @@ try {
     ]);
 
 } catch (Exception $e) {
-    error_log("request_refund.php - Error: " . $e->getMessage());
     http_response_code(500);
     echo json_encode(['error' => 'Failed to submit refund request']);
 }
