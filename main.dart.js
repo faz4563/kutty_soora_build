@@ -32332,7 +32332,7 @@ s=1
 break
 case 1:return A.x(q,r)}})
 return A.y($async$yu,r)},
-qS(){if(B.c.q("kuttysoora.com","localhost"))return"http://localhost/kuttysoora_seafood/backend"
+qS(){if(B.c.q("kuttysoora.com","localhost"))return"http://kuttysoora.com/kuttysoora_seafood/kuttysoora_seafood/backend"
 return"https://kuttysoora.com/kuttysoora_seafood/backend"},
 a7g(a){var s=0,r=A.z(t.GU),q,p,o,n
 var $async$a7g=A.u(function(b,c){if(b===1)return A.w(c,r)
@@ -32412,7 +32412,7 @@ case 1:return A.x(q,r)}})
 return A.y($async$aOh,r)},
 a7j(a){var s=0,r=A.z(t.P),q
 var $async$a7j=A.u(function(b,c){if(b===1)return A.w(c,r)
-while(true)switch(s){case 0:q=A.dX("/is_admin.php",A.Q(["mobile",a],t.N,t.z),"IS_ADMIN",!1)
+while(true)switch(s){case 0:q=A.dX("is_admin.php",A.Q(["mobile",a],t.N,t.z),"IS_ADMIN",!1)
 s=1
 break
 case 1:return A.x(q,r)}})
