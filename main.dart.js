@@ -32335,7 +32335,7 @@ case 1:return A.x(q,r)}})
 return A.y($async$yu,r)},
 qS(){var s=$.aSS
 if(B.c.q(s,"localhost"))return"http://localhost/kuttysoora_seafood/backend"
-return"https://"+s+"/backend"},
+return"https://"+s+"/kuttysoora_seafood/backend"},
 a7g(a){var s=0,r=A.z(t.GU),q,p,o,n
 var $async$a7g=A.u(function(b,c){if(b===1)return A.w(c,r)
 while(true)switch(s){case 0:o=t.N
@@ -114913,7 +114913,7 @@ $.aXX=1
 $.aPJ=-9007199254740992
 $.NB=null
 $.NA=null
-$.aSS="kuttysoora.com/kuttysoora_seafood"
+$.aSS="kuttysoora.com"
 $.b5Y=function(){var s=t.n
 return A.b([A.b([0.001200833568784504,0.002389694492170889,0.0002795742885861124],s),A.b([0.0005891086651375999,0.0029785502573438758,0.0003270666104008398],s),A.b([0.00010146692491640572,0.0005364214359186694,0.0032979401770712076],s)],t.zg)}()
 $.b5W=function(){var s=t.n
