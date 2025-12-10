@@ -79,17 +79,6 @@
       <div>Loading Kuttysoora Seafood...</div>
     </div>
 
-    <script>
-      // Service worker configuration to prevent timeout errors
-      window.addEventListener('load', function(ev) {
-        _flutter.loader.load({
-          serviceWorkerSettings: {
-            serviceWorkerVersion: serviceWorkerVersion,
-            timeoutMillis: 10000, // Increase timeout to 10 seconds
-          },
-        });
-      });
-    </script>
     <script src="flutter_bootstrap.js" async></script>
   </body>
 </html>
