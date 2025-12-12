@@ -1,15 +1,16 @@
 <?php
-/**
- * Secure Login API with Enhanced Security
- * - Rate limiting
- * - IP blacklist checking
- * - Input validation
- * - Security logging
- * - Brute force protection
- */
-
 // CORS headers - must be first
-require_once 'cors_headers.php';
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Accept');
+header('Access-Control-Max-Age: 86400');
+header('Content-Type: application/json; charset=utf-8');
+
+// Handle preflight
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
 
 // Only allow POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -76,55 +77,22 @@ try {
     exit();
 }
 
-// Initialize security manager
-require_once __DIR__ . '/security_manager.php';
-require_once __DIR__ . '/input_validator.php';
-SecurityManager::init($pdo);
-
-// Check IP blacklist
-$clientIP = SecurityManager::getClientIP();
-if (SecurityManager::isIPBlacklisted($clientIP)) {
-    http_response_code(403);
-    echo json_encode(["error" => "Access denied. Your IP has been blocked due to security violations."]);
-    SecurityManager::logSecurityEvent($clientIP, null, 'blocked_access_attempt', 'warning', 
-        'Blocked IP attempted to access login');
-    exit();
-}
-
-// Check rate limiting (10 requests per minute for login)
-if (!SecurityManager::checkRateLimit('/login.php', 10, 100)) {
-    http_response_code(429);
-    echo json_encode(["error" => "Too many requests. Please try again later."]);
-    exit();
-}
-
 // Parse request body
 $input = file_get_contents('php://input');
-try {
-    $data = InputValidator::validateJSON($input);
-    InputValidator::validateRequiredFields($data, ['mobile', 'name']);
-} catch (Exception $e) {
+$data = json_decode($input, true);
+
+if (json_last_error() !== JSON_ERROR_NONE) {
     http_response_code(400);
-    echo json_encode(["error" => $e->getMessage()]);
+    echo json_encode(["error" => "Invalid JSON"]);
     exit();
 }
 
-// Validate and sanitize inputs
-try {
-    $mobile = InputValidator::validatePhone($data['mobile']);
-    $name = InputValidator::validateName($data['name']);
-} catch (Exception $e) {
-    http_response_code(400);
-    echo json_encode(["error" => $e->getMessage()]);
-    SecurityManager::logSecurityEvent($clientIP, null, 'invalid_input', 'warning', 
-        'Invalid input in login: ' . $e->getMessage());
-    exit();
-}
+$mobile = isset($data['mobile']) ? trim($data['mobile']) : '';
+$name = isset($data['name']) ? trim($data['name']) : '';
 
-// Check if account is locked due to failed attempts
-if (SecurityManager::isAccountLocked($mobile)) {
-    http_response_code(403);
-    echo json_encode(["error" => "Account temporarily locked due to multiple failed login attempts. Please try again after 15 minutes."]);
+if (empty($mobile) || empty($name)) {
+    http_response_code(400);
+    echo json_encode(["error" => "Mobile and name required"]);
     exit();
 }
 
@@ -171,16 +139,12 @@ try {
         if (isset($user['role']) && strtolower($user['role']) === 'admin') {
             $password = isset($data['password']) ? $data['password'] : '';
             if (empty($password)) {
-                SecurityManager::recordFailedLogin($mobile, $clientIP);
                 http_response_code(401);
                 echo json_encode(["error" => "Password required for admin"]);
                 exit();
             }
             
             if (empty($user['password_hash']) || !password_verify($password, $user['password_hash'])) {
-                SecurityManager::recordFailedLogin($mobile, $clientIP);
-                SecurityManager::logSecurityEvent($clientIP, $user['id'], 'admin_login_failed', 'warning', 
-                    'Failed admin login attempt');
                 http_response_code(401);
                 echo json_encode(["error" => "Invalid admin credentials"]);
                 exit();
@@ -199,13 +163,6 @@ try {
         $user['mobile'],
         $user['role'] ?? 'user'
     );
-    
-    // Clear failed login attempts on successful login
-    SecurityManager::clearFailedLogins($mobile, $clientIP);
-    
-    // Log successful login
-    SecurityManager::logSecurityEvent($clientIP, $user['id'], 'login_success', 'info', 
-        'User logged in successfully', ['mobile' => $mobile, 'role' => $user['role']]);
     
     // Return success
     http_response_code(200);

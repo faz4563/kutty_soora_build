@@ -52,55 +52,9 @@
     </FilesMatch>
 </IfModule>
 
-# Enhanced Security headers
+# Security headers
 <IfModule mod_headers.c>
-    # Prevent MIME type sniffing
     Header always set X-Content-Type-Options "nosniff"
-    
-    # Prevent clickjacking attacks
     Header always set X-Frame-Options "SAMEORIGIN"
-    
-    # XSS Protection (legacy browsers)
     Header always set X-XSS-Protection "1; mode=block"
-    
-    # Referrer Policy
-    Header always set Referrer-Policy "strict-origin-when-cross-origin"
-    
-    # Content Security Policy (adjust as needed)
-    # Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';"
-    
-    # Remove server information
-    Header always unset X-Powered-By
-    Header always unset Server
-    
-    # Permissions Policy (restrict features)
-    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
-</IfModule>
-
-# Hide PHP version
-ServerSignature Off
-
-# Protect sensitive files
-<FilesMatch "^\.env">
-    Order allow,deny
-    Deny from all
-</FilesMatch>
-
-<FilesMatch "\.(log|ini|conf|sql|bak|backup)$">
-    Order allow,deny
-    Deny from all
-</FilesMatch>
-
-# Protect against directory browsing
-Options -Indexes
-
-# Protect against SQL injection in URLs
-<IfModule mod_rewrite.c>
-    RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
-    RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
-    RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2}) [OR]
-    RewriteCond %{QUERY_STRING} (\.|%2E)(\.|%2E)(/|%2F) [OR]
-    RewriteCond %{QUERY_STRING} (union.*select|select.*union) [NC,OR]
-    RewriteCond %{QUERY_STRING} (drop|insert|cast|create|char) [NC]
-    RewriteRule .* - [F,L]
 </IfModule>
