@@ -11,6 +11,7 @@ class JWTAuth {
             error_log("JWT Auth: Using JWT_SECRET from environment");
         }
         error_log("JWT Auth: Secret key length: " . strlen(trim($secret)));
+        error_log("JWT Auth: Loaded secret: [" . $secret . "]");
         return trim($secret);
     }
     
@@ -93,44 +94,59 @@ class JWTAuth {
     public static function getTokenFromHeaders() {
         error_log("JWT Auth: Getting token from headers...");
         
-        // Method 1: getallheaders()
+        // Method 1: $_SERVER HTTP_AUTHORIZATION (MOST RELIABLE FOR FLUTTER)
+        if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
+            error_log("JWT Auth: HTTP_AUTHORIZATION found: " . substr($_SERVER['HTTP_AUTHORIZATION'], 0, 30) . "...");
+            if (strpos($_SERVER['HTTP_AUTHORIZATION'], 'Bearer ') === 0) {
+                error_log("JWT Auth: ✅ Token extracted from HTTP_AUTHORIZATION");
+                return substr($_SERVER['HTTP_AUTHORIZATION'], 7);
+            } else {
+                // Sometimes it comes without "Bearer " prefix
+                error_log("JWT Auth: ✅ Token extracted from HTTP_AUTHORIZATION (no Bearer prefix)");
+                return $_SERVER['HTTP_AUTHORIZATION'];
+            }
+        }
+        
+        // Method 2: REDIRECT_HTTP_AUTHORIZATION
+        if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+            error_log("JWT Auth: REDIRECT_HTTP_AUTHORIZATION found");
+            if (strpos($_SERVER['REDIRECT_HTTP_AUTHORIZATION'], 'Bearer ') === 0) {
+                error_log("JWT Auth: ✅ Token extracted from REDIRECT_HTTP_AUTHORIZATION");
+                return substr($_SERVER['REDIRECT_HTTP_AUTHORIZATION'], 7);
+            } else {
+                error_log("JWT Auth: ✅ Token extracted from REDIRECT_HTTP_AUTHORIZATION (no Bearer prefix)");
+                return $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+            }
+        }
+        
+        // Method 3: getallheaders()
         if (function_exists('getallheaders')) {
             $headers = getallheaders();
             error_log("JWT Auth: Available headers via getallheaders: " . json_encode(array_keys($headers)));
             foreach (['Authorization', 'authorization', 'AUTHORIZATION'] as $key) {
                 if (isset($headers[$key]) && strpos($headers[$key], 'Bearer ') === 0) {
-                    error_log("JWT Auth: Token found via getallheaders using key: $key");
+                    error_log("JWT Auth: ✅ Token found via getallheaders using key: $key");
                     return substr($headers[$key], 7);
                 }
             }
-        }
-        
-        // Method 2: $_SERVER HTTP_AUTHORIZATION
-        if (isset($_SERVER['HTTP_AUTHORIZATION']) && strpos($_SERVER['HTTP_AUTHORIZATION'], 'Bearer ') === 0) {
-            error_log("JWT Auth: Token found via HTTP_AUTHORIZATION");
-            return substr($_SERVER['HTTP_AUTHORIZATION'], 7);
-        }
-        
-        // Method 3: REDIRECT_HTTP_AUTHORIZATION
-        if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION']) && strpos($_SERVER['REDIRECT_HTTP_AUTHORIZATION'], 'Bearer ') === 0) {
-            error_log("JWT Auth: Token found via REDIRECT_HTTP_AUTHORIZATION");
-            return substr($_SERVER['REDIRECT_HTTP_AUTHORIZATION'], 7);
         }
         
         // Method 4: apache_request_headers()
         if (function_exists('apache_request_headers')) {
             $headers = apache_request_headers();
-            error_log("JWT Auth: Available headers via apache_request_headers: " . json_encode(array_keys($headers)));
             foreach (['Authorization', 'authorization', 'AUTHORIZATION'] as $key) {
                 if (isset($headers[$key]) && strpos($headers[$key], 'Bearer ') === 0) {
-                    error_log("JWT Auth: Token found via apache_request_headers using key: $key");
+                    error_log("JWT Auth: ✅ Token found via apache_request_headers using key: $key");
                     return substr($headers[$key], 7);
                 }
             }
         }
         
-        error_log("JWT Auth: Token not found in any header location");
-        error_log("JWT Auth: \$_SERVER keys: " . json_encode(array_keys($_SERVER)));
+        error_log("JWT Auth: ❌ Token not found in any header location");
+        error_log("JWT Auth: HTTP_AUTHORIZATION in \$_SERVER: " . (isset($_SERVER['HTTP_AUTHORIZATION']) ? 'YES' : 'NO'));
+        if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
+            error_log("JWT Auth: HTTP_AUTHORIZATION value: " . $_SERVER['HTTP_AUTHORIZATION']);
+        }
         return null;
     }
     

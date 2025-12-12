@@ -49,11 +49,12 @@ try {
 
     if ($action === 'add') {
         $product_id = intval($data['product_id']);
-        $quantity = intval($data['quantity']);
+        // Support decimal quantities for weight-based products (e.g., 0.25kg = 250g)
+        $quantity = is_numeric($data['quantity']) ? floatval($data['quantity']) : 0;
         
-        if (!$product_id || !$quantity) {
+        if (!$product_id || $quantity <= 0) {
             http_response_code(400);
-            echo json_encode(["error" => "product_id and quantity required"]);
+            echo json_encode(["error" => "product_id and valid quantity required"]);
             exit;
         }
         
@@ -74,10 +75,11 @@ try {
         exit;
     } elseif ($action === 'update') {
         $product_id = intval($data['product_id']);
-        $quantity = intval($data['quantity']);
-        if (!$product_id || !$quantity) {
+        // Support decimal quantities for weight-based products
+        $quantity = is_numeric($data['quantity']) ? floatval($data['quantity']) : 0;
+        if (!$product_id || $quantity <= 0) {
             http_response_code(400);
-            echo json_encode(["error" => "product_id and quantity required"]);
+            echo json_encode(["error" => "product_id and valid quantity required"]);
             exit;
         }
         $stmt = $pdo->prepare("UPDATE cart SET quantity = ? WHERE user_id = ? AND product_id = ?");
@@ -113,7 +115,8 @@ try {
         $item['id'] = (int)$item['id'];
         $item['price'] = (float)$item['price'];
         $item['stock'] = (int)$item['stock'];
-        $item['quantity'] = (int)$item['quantity'];
+        // Keep quantity as float to support decimal weights (e.g., 0.25kg, 0.5kg)
+        $item['quantity'] = (float)$item['quantity'];
         
         // Format image_url with full backend/images/ path if it's a relative path
         if (isset($item['image_url']) && !empty($item['image_url'])) {

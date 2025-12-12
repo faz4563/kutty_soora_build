@@ -1,4 +1,13 @@
 <?php
+// Aggressive debug: show all errors and confirm script execution
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+error_log('orders.php script started');
+// Uncomment the next line to confirm script is running at all
+// die('orders.php reached start');
+// Aggressive: Always return JSON, never empty
+ob_start();
 // Include comprehensive CORS configuration
 require_once __DIR__ . '/cors_headers.php';
 
@@ -23,22 +32,37 @@ function loadEnv($file) {
 // Load .env file for JWT_SECRET and other configs
 loadEnv(__DIR__ . '/.env');
 
+error_log("🟦 Orders.php - Script started");
+error_log("  📍 Request Method: " . $_SERVER['REQUEST_METHOD']);
+error_log("  📍 Content-Type: " . ($_SERVER['CONTENT_TYPE'] ?? 'not set'));
+
+
 try {
-    require_once 'db_config.php';
-    require_once 'jwt_auth.php';
+	require_once 'db_config.php';
+	require_once 'jwt_auth.php';
+	error_log("  ✅ Loaded db_config and jwt_auth");
 } catch (Exception $e) {
-    http_response_code(500);
-    echo json_encode(['error' => 'Server configuration error', 'details' => $e->getMessage()]);
-    exit();
+	error_log("  ❌ Failed to load dependencies: " . $e->getMessage());
+	http_response_code(500);
+	@header('Content-Type: application/json');
+	echo json_encode(['success' => false, 'error' => 'Server configuration error', 'details' => $e->getMessage()]);
+	ob_end_flush();
+	exit();
 }
 
 // Validate JWT token and get user info
+$tokenPayload = null;
 try {
-    $tokenPayload = JWTAuth::requireAuth();
+	error_log("  🔐 Validating JWT token...");
+	$tokenPayload = JWTAuth::requireAuth();
+	error_log("  ✅ JWT validated, user_id: " . $tokenPayload['user_id']);
 } catch (Exception $e) {
-    http_response_code(401);
-    echo json_encode(['error' => 'Authentication failed', 'details' => $e->getMessage()]);
-    exit();
+	error_log("  ❌ JWT validation failed: " . $e->getMessage());
+	http_response_code(401);
+	@header('Content-Type: application/json');
+	echo json_encode(['success' => false, 'error' => 'Authentication failed', 'details' => $e->getMessage()]);
+	ob_end_flush();
+	exit();
 }
 $authenticated_user_id = $tokenPayload['user_id'];
 
@@ -209,62 +233,70 @@ if ($action === 'place') {
 		exit;
 	}
 } elseif ($action === 'cancel') {
-	$order_id = isset($data['order_id']) ? intval($data['order_id']) : 0;
-	$reason = isset($data['reason']) ? $data['reason'] : 'Cancelled by customer';
-	
-	if (!$order_id) {
-		http_response_code(400);
-		echo json_encode(["error" => "order_id required"]);
+	error_log("🔴 Orders.php - Cancel order request START 🔴");
+	try {
+		$order_id = isset($data['order_id']) ? intval($data['order_id']) : 0;
+		error_log("  📋 Order ID: " . $order_id);
+		error_log("  👤 User ID: " . $user_id);
+
+		if (!$order_id) {
+			error_log("  ❌ Missing order_id");
+			http_response_code(400);
+			echo json_encode(["success" => false, "error" => "order_id required"]);
+			exit;
+		}
+
+		// Check if order belongs to user and can be cancelled
+		error_log("  🔍 Checking order ownership and status...");
+		$stmt = $pdo->prepare("SELECT * FROM orders WHERE id = ? AND user_id = ?");
+		$stmt->execute([$order_id, $user_id]);
+		$order = $stmt->fetch();
+
+		if (!$order) {
+			error_log("  ❌ Order not found or doesn't belong to user");
+			http_response_code(404);
+			echo json_encode(["success" => false, "error" => "Order not found"]);
+			exit;
+		}
+
+		error_log("  ✅ Order found, current status: " . $order['status']);
+
+		if ($order['status'] === 'cancelled') {
+			error_log("  ⚠️ Order already cancelled");
+			echo json_encode(["success" => false, "error" => "Order already cancelled"]);
+			exit;
+		}
+
+		if ($order['status'] === 'delivered') {
+			error_log("  ⚠️ Cannot cancel delivered order");
+			echo json_encode(["success" => false, "error" => "Cannot cancel delivered order"]);
+			exit;
+		}
+
+		// Update order status to cancelled
+		error_log("  📝 Updating order status to cancelled...");
+		$stmt = $pdo->prepare("UPDATE orders SET status = 'cancelled' WHERE id = ?");
+		$result = $stmt->execute([$order_id]);
+
+		if ($result) {
+			error_log("  ✅ Order cancelled successfully");
+			error_log("🔴 Orders.php - Cancel order request END (SUCCESS) 🔴");
+			echo json_encode(["success" => true, "message" => "Order cancelled successfully"]);
+		} else {
+			$errInfo = $stmt->errorInfo();
+			error_log("  ❌ Failed to update order status: " . print_r($errInfo, true));
+			error_log("🔴 Orders.php - Cancel order request END (FAILED) 🔴");
+			http_response_code(500);
+			echo json_encode(["success" => false, "error" => "Failed to cancel order", "details" => $errInfo]);
+		}
+		exit;
+	} catch (Exception $e) {
+		error_log("  ❌ Exception in cancel order: " . $e->getMessage());
+		error_log("  ❌ Stack trace: " . $e->getTraceAsString());
+		http_response_code(500);
+		echo json_encode(["success" => false, "error" => "Exception in cancel order", "details" => $e->getMessage()]);
 		exit;
 	}
-	
-	// First check if order exists
-	$stmt = $pdo->prepare("SELECT * FROM orders WHERE id = ?");
-	$stmt->execute([$order_id]);
-	$order = $stmt->fetch();
-	
-	if (!$order) {
-		error_log("Orders.php - Cancel: Order #$order_id not found");
-		http_response_code(404);
-		echo json_encode(["error" => "Order not found"]);
-		exit;
-	}
-	
-	// Check if order belongs to user
-	if ($order['user_id'] != $user_id) {
-		error_log("Orders.php - Cancel: Order #$order_id belongs to user {$order['user_id']}, not $user_id");
-		http_response_code(403);
-		echo json_encode(["error" => "You don't have permission to cancel this order"]);
-		exit;
-	}
-	
-	// Check if already cancelled
-	if ($order['status'] === 'cancelled') {
-		error_log("Orders.php - Cancel: Order #$order_id already cancelled");
-		http_response_code(400);
-		echo json_encode(["error" => "Order is already cancelled", "success" => false]);
-		exit;
-	}
-	
-	// Check if order can be cancelled (not delivered)
-	if ($order['status'] === 'delivered') {
-		error_log("Orders.php - Cancel: Order #$order_id already delivered");
-		http_response_code(400);
-		echo json_encode(["error" => "Cannot cancel delivered orders. Please request a refund instead.", "success" => false]);
-		exit;
-	}
-	
-	// Update order status to cancelled
-	$stmt = $pdo->prepare("UPDATE orders SET status = 'cancelled', cancellation_reason = ? WHERE id = ?");
-	$stmt->execute([$reason, $order_id]);
-	
-	error_log("Orders.php - Order #$order_id cancelled successfully by user $user_id");
-	
-	echo json_encode([
-		"success" => true,
-		"message" => "Order cancelled successfully"
-	]);
-	exit;
 }
 
 // List orders
@@ -340,5 +372,21 @@ foreach ($orders as &$order) {
 				}
 			}
 }
+@header('Content-Type: application/json');
 echo json_encode(["orders" => $orders]);
+ob_end_flush();
+
+// Global catch for fatal errors: always return JSON
+register_shutdown_function(function() {
+	$error = error_get_last();
+	if ($error && in_array($error["type"], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR])) {
+		http_response_code(500);
+		@header('Content-Type: application/json');
+		echo json_encode([
+			"success" => false,
+			"error" => "Fatal server error",
+			"details" => $error["message"]
+		]);
+	}
+});
 ?>
