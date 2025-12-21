@@ -49,15 +49,35 @@ try {
         $updates[] = "Added minimum_quantity column to products table";
     }
     
+    // Check and add price_unit field
+    try {
+        $stmt = $pdo->query("DESCRIBE products price_unit");
+        $fieldExists = $stmt->fetch() !== false;
+        
+        if (!$fieldExists) {
+            $pdo->exec("ALTER TABLE products ADD COLUMN price_unit VARCHAR(20) DEFAULT 'per_kg'");
+            $updates[] = "Added price_unit column to products table";
+        } else {
+            $updates[] = "price_unit column already exists";
+        }
+    } catch (PDOException $e) {
+        // Field doesn't exist, add it
+        $pdo->exec("ALTER TABLE products ADD COLUMN price_unit VARCHAR(20) DEFAULT 'per_kg'");
+        $updates[] = "Added price_unit column to products table";
+    }
+    
     // Verify the update
     $stmt = $pdo->query("DESCRIBE products");
     $columns = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     $hasMinimumQuantity = false;
+    $hasPriceUnit = false;
     foreach ($columns as $column) {
         if ($column['Field'] === 'minimum_quantity') {
             $hasMinimumQuantity = true;
-            break;
+        }
+        if ($column['Field'] === 'price_unit') {
+            $hasPriceUnit = true;
         }
     }
     
@@ -65,6 +85,7 @@ try {
         "success" => true,
         "updates_applied" => $updates,
         "minimum_quantity_field_exists" => $hasMinimumQuantity,
+        "price_unit_field_exists" => $hasPriceUnit,
         "message" => "Database schema updated successfully"
     ]);
     

@@ -225,6 +225,10 @@ switch ($method) {
         }
         $imageUrl = isset($data['image_url']) ? trim($data['image_url']) : '';
         
+        // Process additional fields
+        $minimumQuantity = isset($data['minimum_quantity']) ? trim($data['minimum_quantity']) : '';
+        $priceUnit = isset($data['price_unit']) ? trim($data['price_unit']) : '';
+        
         // Process benefits fields
         $healthBenefits = isset($data['health_benefits']) && is_array($data['health_benefits']) 
             ? json_encode($data['health_benefits']) 
@@ -239,41 +243,65 @@ switch ($method) {
         try {
             // Log the data being inserted for debugging
             error_log("AGGRESSIVE INSERT - Data: name='$name', category='$category', price=$price, sku='$sku', brand='$brand', availability='$availability'");
+            error_log("Additional fields - minimum_quantity: '$minimumQuantity', price_unit: '$priceUnit'");
             error_log("Benefits data - health_benefits: " . ($healthBenefits ?? 'NULL') . ", nutritional_info: " . ($nutritionalInfo ?? 'NULL') . ", product_uses: " . ($productUses ?? 'NULL'));
             
-            // Use explicit field names and ensure no ID collision
-            $stmt = $pdo->prepare("
-                INSERT INTO products (
-                    name, description, price, category, stock, brand, sku, 
-                    availability, image_url, health_benefits, nutritional_info, product_uses
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ");
+            // Check if minimum_quantity and price_unit fields exist
+            $minimumQuantityExists = false;
+            $priceUnitExists = false;
             
-            $executeParams = [
-                $name, 
-                $description, 
-                $price, 
-                $category, 
-                $stock, 
-                $brand, 
-                $sku,
-                $availability, 
-                $imageUrl,
-                $healthBenefits,
-                $nutritionalInfo,
-                $productUses
+            try {
+                $checkStmt = $pdo->query("DESCRIBE products minimum_quantity");
+                $minimumQuantityExists = $checkStmt->fetch() !== false;
+                error_log("minimum_quantity field exists: " . ($minimumQuantityExists ? 'yes' : 'no'));
+            } catch (PDOException $e) {
+                error_log("minimum_quantity field check failed: " . $e->getMessage());
+            }
+            
+            try {
+                $checkStmt = $pdo->query("DESCRIBE products price_unit");
+                $priceUnitExists = $checkStmt->fetch() !== false;
+                error_log("price_unit field exists: " . ($priceUnitExists ? 'yes' : 'no'));
+            } catch (PDOException $e) {
+                error_log("price_unit field check failed: " . $e->getMessage());
+            }
+            
+            // Build dynamic INSERT query
+            $fields = [
+                'name', 'description', 'price', 'category', 'stock', 'brand', 'sku', 
+                'availability', 'image_url', 'health_benefits', 'nutritional_info', 'product_uses'
+            ];
+            $params = [
+                $name, $description, $price, $category, $stock, $brand, $sku,
+                $availability, $imageUrl, $healthBenefits, $nutritionalInfo, $productUses
             ];
             
-            error_log("EXECUTE PARAMS: " . print_r($executeParams, true));
+            if ($minimumQuantityExists && !empty($minimumQuantity)) {
+                $fields[] = 'minimum_quantity';
+                $params[] = $minimumQuantity;
+            }
+            
+            if ($priceUnitExists && !empty($priceUnit)) {
+                $fields[] = 'price_unit';
+                $params[] = $priceUnit;
+            }
+            
+            $fieldStr = implode(', ', $fields);
+            $placeholderStr = str_repeat('?, ', count($fields) - 1) . '?';
+            
+            $stmt = $pdo->prepare("INSERT INTO products ($fieldStr) VALUES ($placeholderStr)");
+            
+            error_log("DYNAMIC INSERT SQL: INSERT INTO products ($fieldStr) VALUES ($placeholderStr)");
+            error_log("EXECUTE PARAMS: " . print_r($params, true));
             
             // Final safety check - ensure no empty values in critical fields
-            foreach ($executeParams as $i => $param) {
-                if ($param === '' && in_array($i, [0, 2, 3])) { // name, price, category indexes
-                    throw new Exception("Critical field cannot be empty at index $i");
+            foreach ($params as $i => $param) {
+                if ($param === '' && in_array($fields[$i], ['name', 'price', 'category'])) {
+                    throw new Exception("Critical field '{$fields[$i]}' cannot be empty");
                 }
             }
             
-            $result = $stmt->execute($executeParams);
+            $result = $stmt->execute($params);
             
             if (!$result) {
                 $errorInfo = $stmt->errorInfo();
@@ -384,15 +412,26 @@ switch ($method) {
         $updateFields = [];
         $updateParams = [];
         
-        // Check if minimum_quantity field exists in database
+        // Check if minimum_quantity and price_unit fields exist in database
         $minimumQuantityFieldExists = false;
+        $priceUnitFieldExists = false;
+        
         try {
             $checkFieldStmt = $pdo->query("DESCRIBE products minimum_quantity");
             $minimumQuantityFieldExists = $checkFieldStmt->fetch() !== false;
             error_log("Admin Products PUT - minimum_quantity field exists: " . ($minimumQuantityFieldExists ? 'yes' : 'no'));
         } catch (PDOException $e) {
-            error_log("Admin Products PUT - Field check error: " . $e->getMessage());
+            error_log("Admin Products PUT - minimum_quantity field check error: " . $e->getMessage());
             $minimumQuantityFieldExists = false;
+        }
+        
+        try {
+            $checkFieldStmt = $pdo->query("DESCRIBE products price_unit");
+            $priceUnitFieldExists = $checkFieldStmt->fetch() !== false;
+            error_log("Admin Products PUT - price_unit field exists: " . ($priceUnitFieldExists ? 'yes' : 'no'));
+        } catch (PDOException $e) {
+            error_log("Admin Products PUT - price_unit field check error: " . $e->getMessage());
+            $priceUnitFieldExists = false;
         }
         
         // Include fields based on update type
@@ -404,6 +443,9 @@ switch ($method) {
             $allowedFields = ['name', 'description', 'price', 'category', 'stock', 'brand', 'sku', 'availability', 'image_url'];
             if ($minimumQuantityFieldExists) {
                 $allowedFields[] = 'minimum_quantity';
+            }
+            if ($priceUnitFieldExists) {
+                $allowedFields[] = 'price_unit';
             }
             // Add benefits and uses fields
             $allowedFields[] = 'health_benefits';

@@ -122,14 +122,14 @@ if ($action === 'get_by_id') {
 	}
 	
 	// Try full-text search first, fallback to LIKE search
-	$stmt = $pdo->prepare("SELECT id, name, category, description, price, stock, image_url, availability, MATCH(name, description, category) AGAINST(? IN NATURAL LANGUAGE MODE) as relevance FROM products WHERE MATCH(name, description, category) AGAINST(? IN NATURAL LANGUAGE MODE) ORDER BY relevance DESC, id DESC LIMIT 50");
+	$stmt = $pdo->prepare("SELECT id, name, category, description, price, stock, image_url, availability, minimum_quantity, price_unit, MATCH(name, description, category) AGAINST(? IN NATURAL LANGUAGE MODE) as relevance FROM products WHERE MATCH(name, description, category) AGAINST(? IN NATURAL LANGUAGE MODE) ORDER BY relevance DESC, id DESC LIMIT 50");
 	$stmt->execute([$query, $query]);
 	$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	
 	// If no results with full-text, fallback to LIKE search
 	if (empty($products)) {
 		$searchTerm = "%$query%";
-		$stmt = $pdo->prepare("SELECT id, name, category, description, price, stock, image_url, availability FROM products WHERE name LIKE ? OR description LIKE ? OR category LIKE ? ORDER BY id DESC LIMIT 50");
+		$stmt = $pdo->prepare("SELECT id, name, category, description, price, stock, image_url, availability, minimum_quantity, price_unit FROM products WHERE name LIKE ? OR description LIKE ? OR category LIKE ? ORDER BY id DESC LIMIT 50");
 		$stmt->execute([$searchTerm, $searchTerm, $searchTerm]);
 		$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	}
@@ -162,12 +162,12 @@ if ($action === 'get_by_id') {
 
 // Default action: list products with limit for performance
 $limit = isset($_GET['limit']) ? min(100, max(1, (int)$_GET['limit'])) : 50;
-$stmt = $pdo->prepare("SELECT id, name, category, description, price, stock, image_url, availability, brand FROM products ORDER BY id DESC LIMIT ?");
+$stmt = $pdo->prepare("SELECT id, name, category, description, price, stock, image_url, availability, brand, minimum_quantity, price_unit FROM products ORDER BY id DESC LIMIT ?");
 $stmt->execute([$limit]);
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Optimized product processing with batch operations
-$baseImageUrl = 'https://kuttysoora.com/kuttysoora_seafood/backend/images/';
+$baseImageUrl = 'http://localhost/kuttysoora_seafood/backend/images/';
 
 foreach ($products as &$product) {
     // Fast type casting
@@ -183,6 +183,7 @@ foreach ($products as &$product) {
         $product['image_url'] = '';
     }
 }
+
 unset($product); // Clean up reference
 
 echo json_encode([
