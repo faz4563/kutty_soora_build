@@ -104,8 +104,37 @@ try {
         exit;
     }
 
-    // List cart items
-    $stmt = $pdo->prepare("SELECT c.id as cart_id, c.quantity, p.id, p.name, p.category, p.description, p.price, p.stock, p.image_url FROM cart c JOIN products p ON c.product_id = p.id WHERE c.user_id = ?");
+    // List cart items with full product details (matching products API)
+    $stmt = $pdo->prepare("SELECT 
+        c.id as cart_id, 
+        c.quantity, 
+        p.id as id, 
+        p.name, 
+        p.category, 
+        p.description, 
+        p.price, 
+        p.stock, 
+        p.image_url, 
+        p.brand, 
+        p.sku, 
+        p.availability, 
+        p.minimum_quantity, 
+        p.health_benefits, 
+        p.nutritional_info, 
+        p.product_uses, 
+        p.is_special, 
+        p.is_dry, 
+        p.weight, 
+        p.dimensions, 
+        p.material, 
+        p.color, 
+        p.images, 
+        p.tags, 
+        p.created_date, 
+        p.last_updated 
+    FROM cart c 
+    JOIN products p ON c.product_id = p.id 
+    WHERE c.user_id = ?");
     $stmt->execute([$user_id]);
     $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

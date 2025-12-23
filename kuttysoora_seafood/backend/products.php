@@ -160,9 +160,9 @@ if ($action === 'get_by_id') {
 	exit;
 }
 
-// Default action: list products with limit for performance
+// Default action: list products with all fields (matching get_by_category behavior)
 $limit = isset($_GET['limit']) ? min(100, max(1, (int)$_GET['limit'])) : 50;
-$stmt = $pdo->prepare("SELECT id, name, category, description, price, stock, image_url, availability, brand, minimum_quantity, price_unit FROM products ORDER BY id DESC LIMIT ?");
+$stmt = $pdo->prepare("SELECT * FROM products ORDER BY id DESC LIMIT ?");
 $stmt->execute([$limit]);
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
