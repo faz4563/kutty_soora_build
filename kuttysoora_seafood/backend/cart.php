@@ -37,12 +37,38 @@ try {
     require_once 'db_config.php';
     require_once 'jwt_auth.php';
 
+    // DEBUG: Log all cart requests
+    $logData = [
+        'timestamp' => date('Y-m-d H:i:s'),
+        'method' => $_SERVER['REQUEST_METHOD'],
+        'headers' => getallheaders(),
+        'body' => file_get_contents('php://input'),
+        'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? 'unknown'
+    ];
+    error_log('[CART_DEBUG] Request: ' . json_encode($logData));
+
     // Validate JWT token and get user info
     $tokenPayload = JWTAuth::requireAuth();
-    $authenticated_user_id = $tokenPayload['user_id'];
+    
+    // Extract user_id from the payload data structure
+    $authenticated_user_id = null;
+    if (isset($tokenPayload['user_id'])) {
+        $authenticated_user_id = $tokenPayload['user_id'];
+    } elseif (isset($tokenPayload['data']['user_id'])) {
+        $authenticated_user_id = $tokenPayload['data']['user_id'];
+    } else {
+        error_log('[CART_DEBUG] No user_id found in token payload: ' . json_encode($tokenPayload));
+        http_response_code(401);
+        echo json_encode(["error" => "Invalid token structure", "message" => "Please log in again"]);
+        exit;
+    }
+
+    error_log('[CART_DEBUG] Authenticated user ID: ' . $authenticated_user_id);
 
     $data = json_decode(file_get_contents('php://input'), true);
     $action = isset($data['action']) ? $data['action'] : 'list';
+
+    error_log('[CART_DEBUG] Action: ' . $action);
 
     // Use authenticated user ID instead of user_id from request
     $user_id = $authenticated_user_id;
@@ -160,7 +186,10 @@ try {
         }
     }
 
-    echo json_encode(["cart" => $items]);
+    $response = ["cart" => $items];
+    error_log('[CART_DEBUG] Sending response: ' . json_encode(['item_count' => count($items), 'user_id' => $user_id]));
+    
+    echo json_encode($response);
 
 } catch (Exception $e) {
     http_response_code(500);

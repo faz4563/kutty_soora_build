@@ -180,7 +180,15 @@ class JWTAuth {
             exit;
         }
         
-        error_log("JWT Auth: Authentication successful for user: " . $payload['user_id']);
+        // Extract user_id from the correct location in payload
+        $user_id = null;
+        if (isset($payload['user_id'])) {
+            $user_id = $payload['user_id'];
+        } elseif (isset($payload['data']['user_id'])) {
+            $user_id = $payload['data']['user_id'];
+        }
+        
+        error_log("JWT Auth: Authentication successful for user: " . $user_id);
         return $payload;
     }
 
