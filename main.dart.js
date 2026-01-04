@@ -100928,7 +100928,7 @@ r=A.aN(s,!1,t.d)
 if(r.a!=null){s=q.c
 s.toString
 A.aN(s,!1,t.e).q6(r.a.a)}}},
-I(a){var s,r,q,p,o,n,m,l,k,j,i,h,g,f=null,e=A.k("Kuttysoora Seafood",f,f,f,f,A.n(f,f,f,f,f,f,f,f,f,f,f,$.c().M(20),f,f,B.p,f,f,!0,f,f,f,f,f,f,f,f),f,f),d=A.O(f,f,B.h,f,f,B.ew,f,f,f,f,f,f,f,f),c=t.p
+I(a){var s,r,q,p,o,n,m,l,k,j,i,h,g,f=null,e=A.k("Kuttysoora Seafoods",f,f,f,f,A.n(f,f,f,f,f,f,f,f,f,f,f,$.c().M(20),f,f,B.p,f,f,!0,f,f,f,f,f,f,f,f),f,f),d=A.O(f,f,B.h,f,f,B.ew,f,f,f,f,f,f,f,f),c=t.p
 e=A.fV(A.b([A.fC(new A.aAU(),t.e)],c),!0,B.J,f,0,d,B.e,f,f,e)
 d=$.c()
 d=20*Math.min(d.gq(),d.gm())
@@ -101040,13 +101040,13 @@ r=A.aN(s,!1,t.d)
 if(r.a!=null){s=q.c
 s.toString
 A.aN(s,!1,t.e).q6(r.a.a)}}},
-I(a){var s,r,q=this,p=null,o=A.k("Kuttysoora Seafood",p,p,p,p,A.n(p,p,p,p,p,p,p,p,p,p,p,24,p,p,B.D,p,p,!0,p,p,p,p,p,p,p,p),p,p),n=t.p
+I(a){var s,r,q=this,p=null,o=A.k("Kuttysoora Seafoods",p,p,p,p,A.n(p,p,p,p,p,p,p,p,p,p,p,24,p,p,B.D,p,p,!0,p,p,p,p,p,p,p,p),p,p),n=t.p
 o=A.fV(A.b([A.fC(new A.aHB(),t.e),B.bn],n),!0,B.j,p,0,p,B.e,p,p,o)
 s=A.aNn(0,A.O(p,p,B.h,p,p,new A.Z(p,p,p,p,p,new A.kY(B.et,B.dk,B.cp,A.b([B.e.aQ(0.1),B.J],t.t_),p,p),B.n),p,p,p,p,p,p,p,p))
 r=t.V
 r=A.b([A.aC(A.a2(A.b([A.fC(new A.aHC(),t.d),B.aY,A.k("Fresh and Live Seafoods at your doorstep",p,p,p,p,A.n(p,p,B.e,p,p,p,p,p,p,p,p,36,p,p,B.eQ,p,1.2,!0,p,p,p,p,p,p,p,p),p,p),B.dz,A.k("Live & Fresh Seafoods Delivered to Your Home Door Step. 100% Fresh & Live Seafoods only, Guaranteed.",p,p,p,p,A.n(p,p,B.e.aQ(0.9),p,p,p,p,p,p,p,p,16,p,p,p,p,1.5,!0,p,p,p,p,p,p,p,p),p,p),A.l(p,50*$.c().gm(),p),A.O(p,A.tW(B.cc,A.b([A.O(p,B.a0Y,B.h,p,p,new A.Z(B.aT.aQ(0.9),p,p,A.K(10),A.b([new A.aP(0,B.B,B.r.aQ(0.1),B.ao,4)],r),p,B.n),p,p,p,p,B.lj,p,p,p),A.O(p,B.a1B,B.h,p,p,new A.Z(B.aT.aQ(0.9),p,p,A.K(10),A.b([new A.aP(0,B.B,B.r.aQ(0.1),B.ao,4)],r),p,B.n),p,p,p,p,B.lj,p,p,p),A.O(p,B.a1m,B.h,p,p,new A.Z(B.aT.aQ(0.9),p,p,A.K(10),A.b([new A.aP(0,B.B,B.r.aQ(0.1),B.ao,4)],r),p,B.n),p,p,p,p,B.lj,p,p,p)],n),B.de,12,16),B.h,p,p,p,p,p,p,p,p,p,p,1/0)],n),B.t,B.a2,B.f),1)],n)
 if(A.bq(a,p,t.w).w.a.a>800)B.b.R(r,A.b([B.Wg,new A.ir(1,B.d0,A.af(A.b([q.Gu("70+","Fresh Items",B.KT),B.nu,q.Gu("3k","Happy Customers",B.qO),B.nu,q.Gu("","Fast Delivery",B.KQ)],n),B.l,B.hd,B.f,0),p)],n))
-return A.eJ(o,p,A.eK(A.a2(A.b([A.O(p,A.et(B.bh,A.b([s,A.c0(A.O(p,A.af(r,B.l,B.i,B.f,0),B.h,p,p,p,p,p,p,p,B.ll,p,p,p),p,p)],n),B.w,B.b5,p),B.h,p,p,B.ky,p,600,p,p,p,p,p,1/0),B.CQ,A.O(p,A.a2(A.b([A.k("Shop by Category",p,p,p,p,A.n(p,p,B.x,p,p,p,p,p,p,p,p,32,p,p,B.D,p,p,!0,p,p,p,p,p,p,p,p),p,p),B.aY,A.k("Choose from our wide selection of fresh seafood",p,p,p,p,A.n(p,p,B.z,p,p,p,p,p,p,p,p,18,p,p,p,p,p,!0,p,p,p,p,p,p,p,p),p,p),B.CP,q.asb(a)],n),B.t,B.i,B.f),B.h,p,B.oN,p,p,p,p,p,B.ll,p,p,p),B.CQ,A.O(p,A.O(p,A.a2(A.b([A.k("Why Choose Kuttysoora Seafood?",p,p,p,p,A.n(p,p,B.x,p,p,p,p,p,p,p,p,32,p,p,B.D,p,p,!0,p,p,p,p,p,p,p,p),p,p),B.Wj,q.abt()],n),B.l,B.i,B.f),B.h,p,B.oN,p,p,p,p,B.ll,p,p,p,p),B.h,B.pA,p,p,p,p,p,p,B.K0,p,p,1/0),B.CP],n),B.l,B.i,B.f),p,B.K,p,p,B.a5),p,B.cW,p,p,p)},
+return A.eJ(o,p,A.eK(A.a2(A.b([A.O(p,A.et(B.bh,A.b([s,A.c0(A.O(p,A.af(r,B.l,B.i,B.f,0),B.h,p,p,p,p,p,p,p,B.ll,p,p,p),p,p)],n),B.w,B.b5,p),B.h,p,p,B.ky,p,600,p,p,p,p,p,1/0),B.CQ,A.O(p,A.a2(A.b([A.k("Shop by Category",p,p,p,p,A.n(p,p,B.x,p,p,p,p,p,p,p,p,32,p,p,B.D,p,p,!0,p,p,p,p,p,p,p,p),p,p),B.aY,A.k("Choose from our wide selection of fresh seafood",p,p,p,p,A.n(p,p,B.z,p,p,p,p,p,p,p,p,18,p,p,p,p,p,!0,p,p,p,p,p,p,p,p),p,p),B.CP,q.asb(a)],n),B.t,B.i,B.f),B.h,p,B.oN,p,p,p,p,p,B.ll,p,p,p),B.CQ,A.O(p,A.O(p,A.a2(A.b([A.k("Why Choose Kuttysoora Seafoods?",p,p,p,p,A.n(p,p,B.x,p,p,p,p,p,p,p,p,32,p,p,B.D,p,p,!0,p,p,p,p,p,p,p,p),p,p),B.Wj,q.abt()],n),B.l,B.i,B.f),B.h,p,B.oN,p,p,p,p,B.ll,p,p,p,p),B.h,B.pA,p,p,p,p,p,p,B.K0,p,p,1/0),B.CP],n),B.l,B.i,B.f),p,B.K,p,p,B.a5),p,B.cW,p,p,p)},
 Gu(a,b,c){var s=null,r=B.e.aQ(0.1),q=A.K(16),p=A.cm(B.e.aQ(0.2),1)
 return A.O(s,A.a2(A.b([A.ak(c,B.e,s,32),B.aC,A.k(a,s,s,s,s,A.n(s,s,B.e,s,s,s,s,s,s,s,s,28,s,s,B.eQ,s,s,!0,s,2,s,s,s,s,s,s),s,s),A.l(s,8*$.c().gm(),s),A.k(b,s,s,s,s,A.n(s,s,B.e.aQ(0.8),s,s,s,s,s,s,s,s,14,s,s,s,s,s,!0,s,s,s,s,s,s,s,s),B.ar,s)],t.p),B.l,B.hd,B.f),B.h,s,s,new A.Z(r,s,p,q,s,s,B.n),s,180,s,s,B.bl,s,s,180)},
 asb(a){var s=null,r=t.N,q=t.K,p=A.b([A.Y(["name","Fish","description","Daily fresh catch from local fishermen","icon",B.qS,"color",B.cH],r,q),A.Y(["name","Prawns","description","Large and medium-sized fresh prawns","icon",B.mb,"color",B.aT],r,q),A.Y(["name","Crabs","description","Live crabs and fresh crab meat","icon",B.m1,"color",B.O],r,q),A.Y(["name","Squids and Lobsters","description","Fresh squids, cuttlefish and lobsters","icon",B.m3,"color",B.aU],r,q),A.Y(["name","Special Seafoods","description","Premium and special variety seafoods","icon",B.md,"color",B.d5],r,q),A.Y(["name","Dry Seafoods","description","Dried fish and seafood products","icon",B.mg,"color",B.xI],r,q)],t.Mq)
@@ -104214,7 +104214,7 @@ j=A.cm(B.j,1)
 i=A.ak(B.iP,B.j,f,f)
 h=A.l(f,f,2*$.c().gq())
 i=A.l(A.tW(B.cc,A.b([i,h,A.k("Kutty Soora :- ",f,f,f,f,A.n(f,f,B.j,f,f,f,f,f,f,f,f,e?16:14,f,f,B.p,f,f,!0,f,f,f,f,f,f,f,f),f,f)],o),B.de,0,0),f,f)
-return new A.P_(A.a2(A.b([d,p,A.O(f,A.a2(A.b([n,m,A.iv(!1,f,!0,A.O(f,A.af(A.b([i,A.k("9962463925",f,f,f,f,A.n(f,f,B.j,f,f,f,f,f,f,f,f,e?16:14,f,f,B.p,f,f,!0,f,f,f,f,f,f,f,f),f,f),A.l(f,f,4*$.c().gq())],o),B.t,B.hd,B.f,0),B.h,f,f,new A.Z(B.e,f,j,k,f,f,B.n),f,f,f,f,new A.y(0,l,0,l),f,f,f),f,!0,f,f,f,f,f,f,f,f,f,new A.a7v(),f,f,f,f,f,f,f)],o),B.l,B.i,B.f),B.h,f,f,new A.Z(q,f,new A.di(new A.av(s,1,B.y,-1),B.u,B.u,B.u),f,f,f,B.n),f,f,f,f,new A.y(r,r,r,r),f,f,f)],o),B.l,B.i,B.f),f)},
+return new A.P_(A.a2(A.b([d,p,A.O(f,A.a2(A.b([n,m,A.iv(!1,f,!0,A.O(f,A.af(A.b([i,A.k("6381363925",f,f,f,f,A.n(f,f,B.j,f,f,f,f,f,f,f,f,e?16:14,f,f,B.p,f,f,!0,f,f,f,f,f,f,f,f),f,f),A.l(f,f,4*$.c().gq())],o),B.t,B.hd,B.f,0),B.h,f,f,new A.Z(B.e,f,j,k,f,f,B.n),f,f,f,f,new A.y(0,l,0,l),f,f,f),f,!0,f,f,f,f,f,f,f,f,f,new A.a7v(),f,f,f,f,f,f,f)],o),B.l,B.i,B.f),B.h,f,f,new A.Z(q,f,new A.di(new A.av(s,1,B.y,-1),B.u,B.u,B.u),f,f,f,B.n),f,f,f,f,new A.y(r,r,r,r),f,f,f)],o),B.l,B.i,B.f),f)},
 rd(a,b,c,d){var s=null,r=A.ak(a,B.j,s,s),q=A.k(d,s,s,s,s,A.n(s,s,B.x,s,s,s,s,s,s,s,s,b?16:14,s,s,s,s,s,!0,s,s,s,s,s,s,s,s),s,s),p=$.c()
 return A.QG(s,s,s,!0,!0,s,r,s,c,!1,s,new A.bi(A.K(8*Math.min(p.gq(),p.gm())),B.u),s,q,s,s)}}
 A.a7o.prototype={
@@ -104262,7 +104262,7 @@ $S:0}
 A.a7v.prototype={
 $0(){var s=0,r=A.x(t.H),q=1,p=[],o,n,m,l
 var $async$$0=A.t(function(a,b){if(a===1){p.push(b)
-s=q}while(true)switch(s){case 0:m=A.Li(null,"9962463925",null,"tel")
+s=q}while(true)switch(s){case 0:m=A.Li(null,"6381363925",null,"tel")
 q=3
 s=6
 return A.m(A.aOH(m),$async$$0)
