@@ -98,11 +98,19 @@ if ($action === 'place') {
 		$user_name = $user ? $user['name'] : 'Unknown';
 		error_log("Orders.php - User name: $user_name");
 		
-		// Get cart items (product price will be looked up per-item to avoid join issues)
-		$stmt = $pdo->prepare("SELECT c.product_id, c.quantity FROM cart c WHERE c.user_id = ?");
-		$stmt->execute([$user_id]);
-		$cart_items = $stmt->fetchAll();
-		error_log("Orders.php - Cart items count: " . count($cart_items));
+		// Get cart items - Prioritize items sent from frontend
+		$cart_items = [];
+		if (isset($data['items']) && is_array($data['items'])) {
+			$cart_items = $data['items'];
+			error_log("Orders.php - Using " . count($cart_items) . " items from frontend payload");
+			error_log("Orders.php - DEBUG: Full items payload = " . json_encode($cart_items));
+		} else {
+			// Fallback to database cart
+			$stmt = $pdo->prepare("SELECT c.product_id, c.quantity FROM cart c WHERE c.user_id = ?");
+			$stmt->execute([$user_id]);
+			$cart_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			error_log("Orders.php - Using " . count($cart_items) . " items from database cart");
+		}
 		
 		if (!$cart_items) {
 			error_log("Orders.php - ERROR: Cart is empty");
@@ -112,17 +120,91 @@ if ($action === 'place') {
 		}
 		
 		$total = 0;
-		// Lookup product price per item and compute total
-		$priceStmt = $pdo->prepare("SELECT price FROM products WHERE id = ?");
-		foreach ($cart_items as $idx => &$item) {
-			$priceStmt->execute([$item['product_id']]);
-			$prod = $priceStmt->fetch();
-			$item_price = $prod && isset($prod['price']) ? $prod['price'] : 0;
-			$item['price'] = $item_price;
-			$total += $item_price * $item['quantity'];
-		}
+        // Lookup product price per item and compute total
+        $priceStmt = $pdo->prepare("SELECT id, price, sku, minimum_quantity FROM products WHERE id = ?");
+        
+        // We need to iterate by reference to modify the item with calculated totals
+        foreach ($cart_items as $idx => &$item) {
+            // Normalize product_id from frontend (nested in 'product') vs backend (flat)
+            if (isset($item['product']) && isset($item['product']['id'])) {
+                $item['product_id'] = $item['product']['id'];
+            }
+            
+            if (!isset($item['product_id'])) {
+                 error_log("Orders.php - Skipping item without product_id");
+                 continue;
+            }
+
+            $priceStmt->execute([$item['product_id']]);
+            $prod = $priceStmt->fetch(PDO::FETCH_ASSOC);
+            
+            if (!$prod) {
+                 error_log("Orders.php - Product ID {$item['product_id']} not found in DB");
+                 continue;
+            }
+
+            $item_price = isset($prod['price']) ? floatval($prod['price']) : 0;
+            $item['price'] = $item_price;
+            
+            // USE TRUSTED TOTAL FROM FRONTEND IF AVAILABLE
+            if (isset($item['totalPrice'])) {
+                $trustedTotal = floatval($item['totalPrice']);
+                $item['calculated_total'] = $trustedTotal;
+                $total += $trustedTotal;
+                error_log("Orders.php - ✅ Item {$item['product_id']} using TRUSTED frontend total: ₹$trustedTotal");
+                continue; // Skip backend calculation
+            } else {
+                error_log("Orders.php - ⚠️ Item {$item['product_id']} MISSING totalPrice, using backend calculation");
+            }
+            
+            // BACKEND CALCULATION FALLBACK
+            $quantity = isset($item['quantity']) ? floatval($item['quantity']) : 0;
+            $sku = isset($prod['sku']) ? strtolower($prod['sku']) : '';
+            $minQty = isset($prod['minimum_quantity']) ? strtolower($prod['minimum_quantity']) : '';
+            
+            $unitSource = '';
+            if (strpos($sku, 'per_') !== false || strpos($sku, 'piece') !== false || strpos($sku, 'kg') !== false || strpos($sku, 'g') !== false) {
+                $unitSource = $sku;
+            } elseif (!empty($minQty)) {
+                $unitSource = $minQty;
+            }
+            
+            $itemTotal = 0;
+            
+            if (strpos($unitSource, 'piece') !== false) {
+                // Piece based: price * quantity
+                $itemTotal = $item_price * $quantity;
+            } else {
+                // Weight based
+                $unitWeightInGrams = 0;
+                if (!empty($unitSource)) {
+                    $unitStr = str_replace('per_', '', $unitSource);
+                    if (preg_match('/[0-9.]+/', $unitStr, $matches)) {
+                        $val = floatval($matches[0]);
+                        if (strpos($unitStr, 'kg') !== false) {
+                            $unitWeightInGrams = $val * 1000;
+                        } elseif (strpos($unitStr, 'g') !== false) {
+                            $unitWeightInGrams = $val;
+                        }
+                    }
+                }
+                
+                if ($unitWeightInGrams > 0) {
+                    // Price is per Unit (e.g. per 500g)
+                     $units = $quantity / $unitWeightInGrams;
+                     $itemTotal = $item_price * $units;
+                } else {
+                    // Fallback: Price is per Kg, quantity is in grams
+                    $itemTotal = $item_price * ($quantity / 1000);
+                }
+            }
+            
+            // Store calculated total in item for later use
+            $item['calculated_total'] = $itemTotal;
+            $total += $itemTotal;
+        }
 		unset($item);
-		error_log("Orders.php - Total calculated: $total");
+		error_log("Orders.php - Final Total calculated: $total");
 		
 		// Generate order number
 		$order_number = 'ORD-' . date('Ymd') . '-' . strtoupper(substr(uniqid(), -6));
@@ -154,7 +236,8 @@ if ($action === 'place') {
 				$psku = $prod && isset($prod['sku']) ? $prod['sku'] : null;
 				$pcat = $prod && isset($prod['category']) ? $prod['category'] : null;
 				$unit_price = $item['price'];
-				$total_price = $unit_price * $item['quantity'];
+				// Use the correctly calculated total from the previous loop
+				$total_price = isset($item['calculated_total']) ? $item['calculated_total'] : ($unit_price * $item['quantity']);
 				$stmt->execute([
 					$order_id,
 					$item['product_id'],
