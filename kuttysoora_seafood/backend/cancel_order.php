@@ -74,7 +74,7 @@ try {
         exit;
     }
 
-    $stmt = $pdo->prepare("UPDATE orders SET status = 'cancelled', payment_status = 'canceled', updated_at = NOW() WHERE id = ?");
+    $stmt = $pdo->prepare("UPDATE orders SET status = 'cancelled' WHERE id = ?");
     $result = $stmt->execute([$order_id]);
     error_log('cancel_order.php: Update result: ' . json_encode($result));
 

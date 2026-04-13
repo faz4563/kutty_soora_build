@@ -200,28 +200,6 @@ try {
         exit;
     }
 
-    // Check if payment failed or was cancelled
-    if ($paymentDetails['status'] === 'failed' || $paymentDetails['status'] === 'cancelled') {
-        // Mark payment as canceled
-        $stmt = $pdo->prepare("UPDATE orders SET payment_status = 'canceled', status = 'cancelled', updated_at = NOW() WHERE id = ?");
-        $stmt->execute([$orderId]);
-
-        // Log canceled payment
-        $stmt = $pdo->prepare("INSERT INTO payment_logs (order_id, razorpay_order_id, razorpay_payment_id, status, error_message, created_at) VALUES (?, ?, ?, 'canceled', 'Payment was cancelled or failed', NOW())");
-        $stmt->execute([$orderId, $razorpayOrderId, $razorpayPaymentId]);
-
-        $pdo->commit();
-
-        http_response_code(200);
-        echo json_encode([
-            'success' => false,
-            'message' => 'Payment was cancelled or failed',
-            'order_id' => $orderId,
-            'payment_status' => 'canceled'
-        ]);
-        exit;
-    }
-
     if ($paymentDetails['status'] !== 'captured' && $paymentDetails['status'] !== 'authorized') {
         $pdo->rollBack();
         http_response_code(400);
