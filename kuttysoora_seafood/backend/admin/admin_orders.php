@@ -52,10 +52,10 @@ try {
     $userCount = $userCountStmt->fetch();
     error_log("Admin Orders - Total users in database: " . $userCount['total']);
     
-    // Fetch all orders with user information - database already has correct column names
-    // The orders table already has customer_name, customer_phone, delivery_address columns
-    $stmt = $pdo->prepare("SELECT o.*, u.name as user_name, u.mobile as user_mobile FROM orders o JOIN users u ON o.user_id = u.id ORDER BY o.id DESC");
-    $stmt->execute();
+    // Fetch all orders with user information - filter out canceled/cancelled orders
+    // Exclude both payment_status='canceled' and status='cancelled' to ensure no canceled orders appear
+    $stmt = $pdo->prepare("SELECT o.*, u.name as user_name, u.mobile as user_mobile FROM orders o JOIN users u ON o.user_id = u.id WHERE o.payment_status = 'paid' AND o.payment_status NOT IN ('canceled', 'failed', 'timeout') AND o.status NOT IN ('cancelled') ORDER BY o.id DESC");
+            $stmt->execute();
     $orders = $stmt->fetchAll();
     
     error_log("Admin Orders - Total orders found after JOIN: " . count($orders));
