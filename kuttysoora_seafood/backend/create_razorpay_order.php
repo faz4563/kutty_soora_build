@@ -14,7 +14,8 @@
 require_once 'cors_headers.php';
 require_once 'db_config.php';
 require_once 'jwt_auth.php';
-require_once __DIR__ . '/vendor/autoload.php';
+// Suppress warnings from broken Composer dependencies
+@require_once __DIR__ . '/vendor/autoload.php';
 
 use Dotenv\Dotenv;
 

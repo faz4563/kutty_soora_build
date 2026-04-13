@@ -1,7 +1,8 @@
 <?php
 // Try to load dotenv if available, otherwise use fallback
 if (file_exists(__DIR__ . '/vendor/autoload.php')) {
-    require_once __DIR__ . '/vendor/autoload.php';
+    // Suppress warnings from broken Composer dependencies
+    @require_once __DIR__ . '/vendor/autoload.php';
     
     if (class_exists('Dotenv\Dotenv')) {
         try {
