@@ -14,34 +14,25 @@
 require_once 'cors_headers.php';
 require_once 'db_config.php';
 require_once 'jwt_auth.php';
-// Suppress warnings from broken Composer dependencies
-@require_once __DIR__ . '/vendor/autoload.php';
 
-use Dotenv\Dotenv;
-
-// Load environment variables manually (no composer dependency)
-function loadEnv($file) {
-    if (!file_exists($file)) {
-        return false;
+// Safely load Composer autoload if available
+if (file_exists(__DIR__ . '/vendor/autoload.php')) {
+    try {
+        @include_once __DIR__ . '/vendor/autoload.php';
+    } catch (Throwable $e) {
+        error_log("Composer autoload failed in create_razorpay_order: " . $e->getMessage());
     }
-    $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    foreach ($lines as $line) {
-        if (strpos(trim($line), '#') === 0) continue;
-        if (strpos($line, '=') === false) continue;
-        list($key, $value) = explode('=', $line, 2);
-        $key = trim($key);
-        $value = trim($value, " \t\n\r\0\x0B\"'");
-        $_ENV[$key] = $value;
-        putenv("$key=$value");
-    }
-    return true;
 }
 
-// Load .env file for JWT_SECRET and RAZORPAY credentials
-loadEnv(__DIR__ . '/.env');
-
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+// Try to use Dotenv if available
+if (class_exists('Dotenv\Dotenv')) {
+    try {
+        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+        $dotenv->load();
+    } catch (Throwable $e) {
+        error_log("Dotenv failed in create_razorpay_order: " . $e->getMessage());
+    }
+}
 
 header('Content-Type: application/json');
 
