@@ -47,9 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $headers = getallheaders();
 $authHeader = isset($headers['Authorization']) ? $headers['Authorization'] : '';
 
+// Validate Authorization header
 if (empty($authHeader) || !preg_match('/Bearer\s+(.*)$/i', $authHeader, $matches)) {
     http_response_code(401);
-    echo json_encode(['error' => 'Authentication required']);
+    echo json_encode(['error' => 'Unauthorized']);
     exit;
 }
 
