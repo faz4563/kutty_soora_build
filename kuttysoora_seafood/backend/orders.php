@@ -288,8 +288,8 @@ if ($action === 'place') {
 				$img = isset($it['image_url']) ? trim($it['image_url']) : '';
 				if ($img === '') {
 					$it['image_url'] = '';
-				} else if (!preg_match('/^https?:\\/\\//', $img)) {
-					$img = preg_replace('/^(images\\/)+/', '', $img);
+				} else if (!preg_match('/^https?:\/\//', $img)) {
+					$img = preg_replace('/^(images\/)+/', '', $img);
 					$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) ? 'https' : 'http';
 					$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
 					$it['image_url'] = $protocol . '://' . $host . '/kuttysoora_seafood/backend/images/' . $img;
@@ -409,10 +409,8 @@ foreach ($orders as &$order) {
 					if ($img === '') {
 						$it['image_url'] = '';
 					} else if (!preg_match('/^https?:\/\//', $img)) {
-						$img = preg_replace('/^(images\/)+/', '', $img);
-						$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) ? 'https' : 'http';
-						$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
-						$it['image_url'] = $protocol . '://' . $host . '/kuttysoora_seafood/backend/images/' . $img;
+						$img = preg_replace('/^(images\/)*/', '', $img);
+						$it['image_url'] = 'https://kuttysoora.com/kuttysoora_seafood/backend/images/' . $img;
 					} else {
 						if (strpos($img, 'http://kuttysoora.com') === 0) {
 							$img = preg_replace('/^http:\/\//', 'https://', $img);
