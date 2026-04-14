@@ -129,58 +129,16 @@ try {
         exit;
     }
 
-    // AGGRESSIVE: Recalculate total from order items to verify integrity
-    $calculatedTotal = 0;
-    $itemsStmt = $pdo->prepare("
-        SELECT SUM(COALESCE(total_price, quantity * unit_price)) as item_total 
-        FROM order_items 
-        WHERE order_id = ?
-    ");
-    $itemsStmt->execute([$orderId]);
-    $itemsResult = $itemsStmt->fetch();
-    if ($itemsResult && $itemsResult['item_total'] !== null) {
-        $calculatedTotal = (float)$itemsResult['item_total'];
-    }
-    
-    // Use database order total as primary source
-    $orderTotal = (float)$order['total_amount'];
-    
-    // AGGRESSIVE: If calculated total differs significantly from DB total, use calculated total
-    // This handles cases where cart was updated after order creation
-    if ($calculatedTotal > 0 && abs($calculatedTotal - $orderTotal) > 0.5) {
-        error_log(
-            "[create_razorpay_order] MISMATCH FIX - Order " . $orderId . ": "
-            . "DB total=" . $orderTotal . ", Calculated=" . $calculatedTotal . ", Using calculated"
-        );
-        // Update order total in DB to match calculated
-        $updateStmt = $pdo->prepare("
-            UPDATE orders SET total_amount = ?, updated_at = NOW() WHERE id = ?
-        ");
-        $updateStmt->execute([$calculatedTotal, $orderId]);
-        $orderTotal = $calculatedTotal;
-    }
-    
     // Verify amount matches order total (with small tolerance for floating point)
+    $orderTotal = (float)$order['total_amount'];
     if (abs($orderTotal - $amount) > 0.01) {
-        error_log(
-            "[create_razorpay_order] AMOUNT MISMATCH - Order " . $orderId . ": "
-            . "Expected=" . $orderTotal . " (DB=" . (float)$order['total_amount'] . ", Calc=" . $calculatedTotal . "), "
-            . "Received=" . $amount
-        );
         http_response_code(400);
         echo json_encode([
             'error' => 'Amount mismatch',
             'expected' => $orderTotal,
-            'received' => $amount,
-            'databaseTotal' => (float)$order['total_amount'],
-            'calculatedTotal' => $calculatedTotal
+            'received' => $amount
         ]);
         exit;
-    } else {
-        error_log(
-            "[create_razorpay_order] Amount verified - Order " . $orderId . ": "
-            . "Amount=" . $amount . " matches Order Total=" . $orderTotal
-        );
     }
 
     // Get Razorpay credentials from environment
