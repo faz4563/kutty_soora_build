@@ -75,22 +75,16 @@ $userId = $decoded['user_id'];
 // Get and validate input
 $input = json_decode(file_get_contents('php://input'), true);
 
-// Enhanced Input Validation and Debugging
 if (!$input) {
-    error_log("Invalid JSON input: " . file_get_contents('php://input'));
     http_response_code(400);
     echo json_encode(['error' => 'Invalid JSON input']);
     exit;
 }
 
-// Log input data for debugging
-error_log("Input Data: " . json_encode($input));
-
 // Required fields validation
 $requiredFields = ['order_id', 'amount', 'currency'];
 foreach ($requiredFields as $field) {
     if (!isset($input[$field]) || empty($input[$field])) {
-        error_log("Missing required field: $field");
         http_response_code(400);
         echo json_encode(['error' => "Missing required field: $field"]);
         exit;
@@ -98,20 +92,16 @@ foreach ($requiredFields as $field) {
 }
 
 $orderId = filter_var($input['order_id'], FILTER_VALIDATE_INT);
+$amount = filter_var($input['amount'], FILTER_VALIDATE_FLOAT);
+$currency = filter_var($input['currency'], FILTER_SANITIZE_STRING);
+
+// Validate inputs
 if ($orderId === false || $orderId <= 0) {
-    error_log("Invalid order ID: " . $input['order_id']);
     http_response_code(400);
     echo json_encode(['error' => 'Invalid order ID']);
     exit;
 }
 
-// Log validated order ID
-error_log("Validated Order ID: $orderId");
-
-$amount = filter_var($input['amount'], FILTER_VALIDATE_FLOAT);
-$currency = filter_var($input['currency'], FILTER_SANITIZE_STRING);
-
-// Validate inputs
 if ($amount === false || $amount <= 0) {
     http_response_code(400);
     echo json_encode(['error' => 'Invalid amount']);
@@ -135,7 +125,6 @@ try {
     $order = $stmt->fetch();
 
     if (!$order) {
-        error_log("Order not found or access denied for Order ID: $orderId, User ID: $userId");
         http_response_code(404);
         echo json_encode(['error' => 'Order not found or access denied']);
         exit;
@@ -256,6 +245,7 @@ try {
     error_log("Database Error in create_razorpay_order: " . $e->getMessage());
     http_response_code(500);
     $response = ['error' => 'Database error occurred'];
+    // Show details in development mode
     if ($_ENV['APP_DEBUG'] === 'true' || $_ENV['APP_ENV'] === 'development') {
         $response['details'] = $e->getMessage();
         $response['code'] = $e->getCode();
@@ -266,6 +256,7 @@ try {
     error_log("Error in create_razorpay_order: " . $e->getMessage());
     http_response_code(500);
     $response = ['error' => 'An error occurred while processing your request'];
+    // Show details in development mode
     if ($_ENV['APP_DEBUG'] === 'true' || $_ENV['APP_ENV'] === 'development') {
         $response['details'] = $e->getMessage();
     }

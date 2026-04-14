@@ -99059,7 +99059,7 @@ p=J.bn(a)
 if(p.h(a,m)!=null)q.push(A.ej(A.L(6),A.j5(p.h(a,m),new A.asr(),B.b8,40,40),B.aq))
 if(p.h(a,m)!=null)q.push(B.ei)
 o=p.h(a,"name")
-q.push(A.aB(A.a1(A.b([A.k(o==null?"Unknown Item":o,n,n,n,n,B.nP,n,n),B.dC,A.k("Qty: "+B.b.gaH(J.ai(p.h(a,"product_sku")).split("_"))+" = \u20b9"+A.o(p.h(a,"price")),n,n,n,n,A.n(n,n,B.ag,n,n,n,n,n,n,n,n,12,n,n,n,n,n,!0,n,n,n,n,n,n,n,n),n,n)],r),B.t,B.i,B.f),1))
+q.push(A.aB(A.a1(A.b([A.k(o==null?"Unknown Item":o,n,n,n,n,B.nP,n,n),B.dC,A.k("Unit Price: "+A.o(p.h(a,"unit_price")),n,n,n,n,A.n(n,n,B.ag,n,n,n,n,n,n,n,n,12,n,n,n,n,n,!0,n,n,n,n,n,n,n,n),n,n)],r),B.t,B.i,B.f),1))
 q.push(A.a1(A.b([A.k("\u20b9"+A.o(p.h(a,"total_price")),n,n,n,n,B.el,n,n),A.k("Ordered: "+this.a.afN(a),n,n,n,n,A.n(n,n,B.ag,n,n,n,n,n,n,n,n,12,n,n,n,n,n,!0,n,n,n,n,n,n,n,n),n,n)],r),B.k,B.i,B.f))
 return A.O(n,A.ae(q,B.k,B.i,B.f,0),B.h,n,n,new A.Z(B.ch,n,n,s,n,n,B.n),n,n,n,B.JZ,B.cj,n,n,n)},
 $S:620}
@@ -101303,7 +101303,7 @@ aby(){var s=t.N,r=t.K,q=A.b([A.Y(["name","Fish","icon",B.qR,"color",B.cI],s,r),A
 r=$.c().gq()
 return A.Cy(!0,!0,null,new A.pe(2,16*$.c().gm(),16*r,1.2,null),new A.aBd(q),6,null,B.mR,!0)},
 abJ(){var s=t.N,r=t.K,q=t.zO
-s=A.a0(new A.a4(A.b([A.Y(["icon",B.r3,"title","Fast Delivery","subtitle","Fresh seafood"],s,r),A.Y(["icon",B.m8,"title","Free Delivery","subtitle","No delivery charges on all Chennai Based orders"],s,r),A.Y(["icon",B.qS,"title","Quality Assured","subtitle","Fresh & Live Seafoods only, Guaranteed"],s,r),A.Y(["icon",B.iT,"title","Minimum Order \u20b9599","subtitle","Easy ordering with minimum \u20b9599"],s,r),A.Y(["icon",B.qE,"title","No Frozen, No Preservatives","subtitle","100% Fresh & Live only"],s,r),A.Y(["icon",A.aSF(new A.qq("assets/fssai.png",null,null)),"title","FSSAI Lic No","subtitle","22425529000376"],s,r)],t.Mq),new A.aBe(),q),q.i("ah.E"))
+s=A.a0(new A.a4(A.b([A.Y(["icon",B.r3,"title","Fast Delivery","subtitle","Fresh seafood"],s,r),A.Y(["icon",B.m8,"title","Free Delivery","subtitle","No delivery charges on all Chennai Based orders"],s,r),A.Y(["icon",B.qS,"title","Quality Assured","subtitle","Fresh & Live Seafoods only, Guaranteed"],s,r),A.Y(["icon",B.iT,"title","Minimum Order \u20b9599","subtitle","Easy ordering with minimum \u20b9599"],s,r),A.Y(["icon",B.qE,"title","No Frozen, No Preservatives","subtitle","100% Fresh & Live only"],s,r),A.Y(["icon",A.aSF(new A.qq("assets/fssai.png",null,null)),"title","Approved By Fssai","subtitle","22425529000376"],s,r)],t.Mq),new A.aBe(),q),q.i("ah.E"))
 return A.a1(s,B.k,B.i,B.f)}}
 A.aBi.prototype={
 $1(a){var s,r=this.a,q=r.c
@@ -101392,7 +101392,7 @@ return A.O(s,A.a1(A.b([A.ak(c,B.e,s,32),B.ax,A.k(a,s,s,s,s,A.n(s,s,B.e,s,s,s,s,s
 asA(a){var s=null,r=t.N,q=t.K,p=A.b([A.Y(["name","Fish","description","Daily fresh catch from local fishermen","icon",B.qR,"color",B.cI],r,q),A.Y(["name","Prawns","description","Large and medium-sized fresh prawns","icon",B.md,"color",B.aJ],r,q),A.Y(["name","Crabs","description","Live crabs and fresh crab meat","icon",B.m3,"color",B.P],r,q),A.Y(["name","Squids and Lobsters","description","Fresh squids, cuttlefish and lobsters","icon",B.m5,"color",B.aU],r,q),A.Y(["name","Special Seafoods","description","Premium and special variety seafoods","icon",B.mf,"color",B.d6],r,q),A.Y(["name","Dry Seafoods","description","Dried fish and seafood products","icon",B.mi,"color",B.xK],r,q)],t.Mq)
 return A.Cy(!0,!0,s,new A.pe(A.br(a,s,t.w).w.a.a>1000?3:2,24,24,1.1,s),new A.aHW(p),6,s,B.mR,!0)},
 abK(){var s=null,r=t.N,q=t.K
-return A.Cy(!0,!0,s,B.Wq,new A.aHX(A.b([A.Y(["icon",B.r3,"title","Fast Delivery","description","Quick delivery to your doorstep. "],r,q),A.Y(["icon",B.m8,"title","Free Delivery","description","Free delivery on Chennai Based orders - No delivery charges"],r,q),A.Y(["icon",B.qS,"title","Quality Assured","description","Fresh & Live Seafoods only, Quality Guaranteed"],r,q),A.Y(["icon",B.iT,"title","Minimum Order \u20b9599","description","Easy ordering with minimum purchase of just \u20b9599"],r,q),A.Y(["icon",B.qE,"title","No Frozen","description","No Frozen, No Preservatives - 100% Fresh & Live only"],r,q),A.Y(["icon",A.aSF(new A.qq("assets/fssai.png",s,s)),"title","FSSAI Lic No","description","22425529000376"],r,q)],t.Mq)),6,s,B.mR,!0)}}
+return A.Cy(!0,!0,s,B.Wq,new A.aHX(A.b([A.Y(["icon",B.r3,"title","Fast Delivery","description","Quick delivery to your doorstep. "],r,q),A.Y(["icon",B.m8,"title","Free Delivery","description","Free delivery on Chennai Based orders - No delivery charges"],r,q),A.Y(["icon",B.qS,"title","Quality Assured","description","Fresh & Live Seafoods only, Quality Guaranteed"],r,q),A.Y(["icon",B.iT,"title","Minimum Order \u20b9599","description","Easy ordering with minimum purchase of just \u20b9599"],r,q),A.Y(["icon",B.qE,"title","No Frozen","description","No Frozen, No Preservatives - 100% Fresh & Live only"],r,q),A.Y(["icon",A.aSF(new A.qq("assets/fssai.png",s,s)),"title","Approved By Fssai","description","22425529000376"],r,q)],t.Mq)),6,s,B.mR,!0)}}
 A.aI0.prototype={
 $1(a){var s,r=this.a,q=r.c
 if(q==null)return
