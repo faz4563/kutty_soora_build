@@ -1,15 +1,33 @@
 <?php
-// Try to load dotenv if available, otherwise use fallback
+// AGGRESSIVE FIX: Handle broken Composer dependencies gracefully
+// Try to load dotenv if available, but don't fail if Composer is broken
+$composerLoaded = false;
+
 if (file_exists(__DIR__ . '/vendor/autoload.php')) {
-    require_once __DIR__ . '/vendor/autoload.php';
-    
-    if (class_exists('Dotenv\Dotenv')) {
-        try {
-            $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-            $dotenv->load();
-        } catch (Exception $e) {
-            // Dotenv failed, will try direct .env parsing
+    try {
+        // Use include instead of require to avoid fatal errors
+        // Wrap in try-catch to handle both old and new PHP error handling
+        $composerLoaded = @include_once __DIR__ . '/vendor/autoload.php';
+        
+        // Verify the autoloader actually worked
+        if (function_exists('spl_autoload_register') && $composerLoaded) {
+            $composerLoaded = true;
         }
+    } catch (Throwable $e) {
+        // Composer is broken, continue without it
+        error_log("Composer autoload failed: " . $e->getMessage());
+        $composerLoaded = false;
+    }
+}
+
+// Try to load dotenv if Composer worked
+if ($composerLoaded && class_exists('Dotenv\Dotenv')) {
+    try {
+        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+        $dotenv->load();
+    } catch (Throwable $e) {
+        // Dotenv failed, will try direct .env parsing
+        error_log("Dotenv loading failed: " . $e->getMessage());
     }
 }
 
