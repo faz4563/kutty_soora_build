@@ -1,0 +1,94 @@
+# CORS headers are handled in individual PHP files to avoid conflicts
+# Uncomment the section below if you want to handle CORS globally instead
+# <IfModule mod_headers.c>
+#     Header always set Access-Control-Allow-Origin "*"
+#     Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+#     Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With, Accept"
+#     Header always set Access-Control-Max-Age "86400"
+#     Header always set Access-Control-Allow-Credentials "true"
+#     Header always set Access-Control-Expose-Headers "Content-Length, Content-Range"
+# </IfModule>
+
+# Let PHP files handle their own OPTIONS requests and CORS
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # AGGRESSIVE Authorization header passing - try multiple methods
+    RewriteCond %{HTTP:Authorization} ^(.+)$
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%1]
+    
+    RewriteCond %{HTTP:Authorization} ^(.+)$
+    RewriteRule .* - [E=REDIRECT_HTTP_AUTHORIZATION:%1]
+    
+    # Set environment variable for CGI
+    SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+    
+    # Don't interfere with OPTIONS - let PHP handle it
+    # RewriteCond %{REQUEST_METHOD} ^OPTIONS
+    # RewriteRule ^(.*)$ $1 [R=200,L]
+    
+    # Ensure PHP files are processed normally
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# Enable CGI/FastCGI Authorization header
+<IfModule mod_setenvif.c>
+    SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+</IfModule>
+
+# CORS headers are handled individually in PHP files
+# Image files don't need CORS since they're served directly by Apache
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+    # Images served directly without CORS conflicts
+</FilesMatch>
+
+# Cache control for images (optional - improves performance)
+<IfModule mod_expires.c>
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+        ExpiresActive On
+        ExpiresDefault "access plus 1 month"
+    </FilesMatch>
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# SECURITY: Block access to sensitive files and directories
+<FilesMatch "^(\.env|\.env\.|composer\.(json|lock)|\.git|\.htaccess|\.htpasswd|config.*\.php|composer_bootstrap\.php|fix_composer\.php)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# SECURITY: Deny access to hidden files/directories (starting with a dot)
+RedirectMatch 403 /\..*$
+
+# SECURITY: Disable directory browsing
+Options -Indexes
+
+# SECURITY: Block PHP execution in the images upload directory
+# (prevents uploaded files from being executed as scripts)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} ^/.*/images/.*\.(php|phtml|php3|php4|php5|phar)$ [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# SECURITY: Disable PHP execution inside the vendor directory
+# (defense in depth - vendor files should never be web-accessible scripts)
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_URI} ^/.*/vendor/ [NC]
+    RewriteCond %{REQUEST_URI} \.(php|phtml|php3|php4|php5|phar)$ [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
