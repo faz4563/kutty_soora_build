@@ -227,6 +227,33 @@ CREATE TABLE `payment_logs` (
     REFERENCES `orders` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- ----------------------------------------------------------------------------
+--  8. BANNERS / OFFERS
+--     Home-page banner carousel offers. `images` is a JSON array of relative
+--     image paths (e.g. ["images/banner_x.png"]). `old_price` / `offer_price`
+--     drive the stacked rate details shown on the carousel slide.
+-- ----------------------------------------------------------------------------
+DROP TABLE IF EXISTS `banners`;
+CREATE TABLE `banners` (
+  `id`             INT UNSIGNED  NOT NULL AUTO_INCREMENT,
+  `title`          VARCHAR(255)  NOT NULL DEFAULT '',
+  `subtitle`       VARCHAR(500)           DEFAULT '',
+  `category`       VARCHAR(100)           DEFAULT '',
+  `product_id`     INT UNSIGNED           DEFAULT NULL,
+  `images`         TEXT                   DEFAULT NULL,  -- JSON array of URLs
+  `old_price`      DECIMAL(10,2)          DEFAULT NULL,
+  `offer_price`    DECIMAL(10,2)          DEFAULT NULL,
+  `discount_label` VARCHAR(50)            DEFAULT '',
+  `is_active`      TINYINT(1)    NOT NULL DEFAULT 1,
+  `sort_order`     INT           NOT NULL DEFAULT 0,
+  `created_at`     DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at`     DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP
+                                     ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `idx_banners_active` (`is_active`),
+  KEY `idx_banners_category` (`category`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- ============================================================================

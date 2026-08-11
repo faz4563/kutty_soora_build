@@ -59,6 +59,38 @@ try {
         $updates[] = "Added price_unit column to products table";
     }
     
+    // Create the banners table if it doesn't exist (home-page offer carousel)
+    try {
+        $stmt = $pdo->query("SHOW TABLES LIKE 'banners'");
+        $tableExists = $stmt->fetch() !== false;
+        
+        if (!$tableExists) {
+            $pdo->exec("CREATE TABLE banners (
+                id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                title VARCHAR(255) NOT NULL,
+                subtitle VARCHAR(500) DEFAULT '',
+                category VARCHAR(100) DEFAULT '',
+                product_id INT UNSIGNED NULL,
+                images TEXT NULL,
+                old_price DECIMAL(10,2) NULL,
+                offer_price DECIMAL(10,2) NULL,
+                discount_label VARCHAR(50) DEFAULT '',
+                is_active TINYINT(1) DEFAULT 1,
+                sort_order INT DEFAULT 0,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                PRIMARY KEY (id),
+                KEY idx_banners_active (is_active),
+                KEY idx_banners_category (category)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
+            $updates[] = "Created banners table (banner / offer carousel)";
+        } else {
+            $updates[] = "banners table already exists";
+        }
+    } catch (PDOException $e) {
+        $updates[] = "banners table check skipped: " . $e->getMessage();
+    }
+    
     // Verify the update
     $stmt = $pdo->query("DESCRIBE products");
     $columns = $stmt->fetchAll(PDO::FETCH_ASSOC);
