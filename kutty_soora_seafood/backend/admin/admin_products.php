@@ -336,6 +336,7 @@ switch ($method) {
             }
             
             echo json_encode([
+                "success" => true,
                 "message" => "Product created successfully",
                 "product" => $product
             ]);
@@ -498,6 +499,7 @@ switch ($method) {
             }
             
             echo json_encode([
+                "success" => true,
                 "message" => "Product updated successfully",
                 "product" => $product
             ]);
@@ -558,7 +560,10 @@ switch ($method) {
             //     }
             // }
             
-            echo json_encode(["message" => "Product deleted successfully"]);
+            echo json_encode([
+                "success" => true,
+                "message" => "Product deleted successfully"
+            ]);
             
         } catch (PDOException $e) {
             http_response_code(500);

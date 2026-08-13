@@ -10,12 +10,18 @@
 // Enhanced CORS headers for better web compatibility
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Accept');
+header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With, Accept, Cache-Control, Pragma');
 header('Access-Control-Max-Age: 86400');
 header('Content-Type: application/json; charset=utf-8');
 
 // Performance optimizations
-header('Cache-Control: max-age=120, must-revalidate'); // 2 min cache
+// AGGRESSIVE FIX: NEVER cache the public banner list. The old 'max-age=120'
+// header made browsers serve a stale list for 2 minutes, so a banner deleted
+// in the admin panel kept showing on the home screen. The Flutter client also
+// appends a cache-busting query param as a second line of defence.
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+header('Expires: 0');
 ob_start('ob_gzhandler'); // Enable compression
 ini_set('memory_limit', '128M');
 
